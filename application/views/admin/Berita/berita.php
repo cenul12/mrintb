@@ -29,10 +29,10 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="20%">Judul Berita</th>
-                                <th width="15%">Tanggal</th>
-                                <th width="10%">Foto</th>
-                                <th width="10%">Aksi</th>
+                                <th width="23%">Judul Berita</th>
+                                <th width="15%">Tanggal</th> 
+                                <th width="12%">Foto</th>
+                                <th width="5%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,12 +44,12 @@
                                 <td><?= $no++ ?></td>
                                 <td><?= $value->judul_berita ?></td>
                                 <td><?php echo date('d F Y', strtotime($value->tanggal)); ?></td>
-                                <td><img src="<?= base_url()?>assets/Img/<?= $value->foto;?>" width="100%" height="25%"></td>
+                                <td><img src="<?= site_url()?>assets/Img/<?= $value->foto;?>" width="100%" height="25%"></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-berita<?php echo $value->id_berita ?>">Lihat
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-berita<?php echo $value->id_berita ?>"><i class="fa  fa-eye"></i>
                                     </button>
 
-                                    <a href='<?php echo base_url().'index.php/Delete/berita/'.$value->id_berita?>' > <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');">Hapus</button></a>
+                                    <a href="<?= site_url('');?>Delete/berita/<?php echo $value->id_berita ?>" > <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');"><i class="fa  fa-trash"></i></button></a>
 
                                     <!-- <button type="button" class="btn btn-danger"><i class="fa  fa-pencil"></i></button> -->
                                 </td>
@@ -68,7 +68,7 @@
                                     <!-- data rapat -->                                
                                         <center><h1><?php echo $value->judul_berita; ?></h1></center> <br/>
                                         <label>Post : <?php echo date('d F Y', strtotime($value->tanggal)); ?></label> <br/>
-                                        <center><img src='<?php echo base_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
+                                        <center><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
                                         <?php echo $value->isi_berita; ?> <br/>
                                     </div>
                                     <div class="modal-footer">
@@ -128,7 +128,7 @@
                                             <!--/.col -->
                                     </div>
                                     <!--/.row (editor) -->
-                                    </div>
+                                </div>
                                 <div class="modal-footer" >
                                     <button type="submit" class="btn btn-primary pull-right">Tambah</button>
                                 </div>

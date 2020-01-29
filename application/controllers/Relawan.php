@@ -14,8 +14,15 @@ class Relawan extends CI_Controller {
 		if(!isset($_SESSION['id'])){
 			return redirect('user/login');
 		}
+		$data = array(
+				'data_prov' =>$this->M_view->provinsi()->result_object(),
+				'data_kab' =>$this->M_view->kabupaten1(),
+				'data_kec' =>$this->M_view->kecamatan1(),
+				'data_desa' =>$this->M_view->desa1(),
+				'data_relawan' => $this->M_view->relawan_satu($_SESSION['id'])->row_array(),
+		);
 
-		$data['data_relawan'] = $this->M_view->relawan_satu($_SESSION['id'])->row_array();
+		// $data['data_relawan'] = $this->M_view->relawan_satu($_SESSION['id'])->row_array();
 		$this->load->view('relawan/header',$data);
 		$this->load->view('relawan/profile', $data);
 		$this->load->view('relawan/footer');

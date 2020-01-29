@@ -18,7 +18,7 @@
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6 banner_bottom_grid help ">
-							<a class="img-responsive"><img  src="<?= base_url() ;?>assets/Img/<?= $detail_berita['foto'] ?>" alt="image" ></a>
+							<a class="img-responsive"><img  src="<?= site_url() ;?>assets/Img/<?= $detail_berita['foto'] ?>" alt="image" ></a>
 						</div>
 						<div class="col-md-3"></div>
 					</div>

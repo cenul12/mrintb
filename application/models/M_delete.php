@@ -28,4 +28,9 @@ class M_delete extends CI_Model {
         $this->db->delete('agenda');
     }
 
+    public function testimoni($id){
+        $this->db->where('id_testimoni',$id);
+        $this->db->delete('testimoni');
+    }
+
 }

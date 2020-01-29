@@ -2,7 +2,7 @@
 	<div class="footer">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-4">
-				<a class="navbar-brand" ><img src="<?php echo base_url(); ?>assets/User/images/actf.png" alt="logo" width=100%></a>
+				<a class="navbar-brand" ><img src="<?php echo site_url(); ?>assets/User/images/actf.png" alt="logo" width=100%></a>
 			</div>
 			<div class="col-md-4 sign-gd">
 					<ul>
@@ -43,8 +43,8 @@
 	</footer>
 
 
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/User/js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/User/js/bootstrap.js"></script>
+	<script type="text/javascript" src="<?php echo site_url(); ?>assets/User/js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="<?php echo site_url(); ?>assets/User/js/bootstrap.js"></script>
 	<script>
 		$('ul.dropdown-menu li').hover(function () {
 			$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -55,8 +55,8 @@
 
 	<!-- js -->
 	<!-- Smooth-Scrolling-JavaScript -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/User/js/easing.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/User/js/move-top.js"></script>
+	<script type="text/javascript" src="<?php echo site_url(); ?>assets/User/js/easing.js"></script>
+	<script type="text/javascript" src="<?php echo site_url(); ?>assets/User/js/move-top.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll, .navbar li a, .footer li a").click(function (event) {
@@ -87,12 +87,12 @@
 <!-- 	<a id="toTop" href="#top" style="position: fixed; z-index: 2147483647; display: block;"><i class="arrow_carrot-up" <="" i=""></i></a> -->
 	<a href="#top" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/User/js/jquery-1.7.2.js"></script>
-	<script src="<?php echo base_url(); ?>assets/User/js/jquery.quicksand.js" type="text/javascript"></script>
-	<script src="<?php echo base_url(); ?>assets/User/js/script.js" type="text/javascript"></script>
-	<script src="<?php echo base_url(); ?>assets/User/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-	<script src="<?php echo base_url(); ?>assets/User/dist/sweetalert2.all.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/User/dist/myscript.js"></script>
+	<script type="text/javascript" src="<?php echo site_url(); ?>assets/User/js/jquery-1.7.2.js"></script>
+	<script src="<?php echo site_url(); ?>assets/User/js/jquery.quicksand.js" type="text/javascript"></script>
+	<script src="<?php echo site_url(); ?>assets/User/js/script.js" type="text/javascript"></script>
+	<script src="<?php echo site_url(); ?>assets/User/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+	<script src="<?php echo site_url(); ?>assets/User/dist/sweetalert2.all.min.js"></script>
+	<script src="<?php echo site_url(); ?>assets/User/dist/myscript.js"></script>
 	<!-- //jQuery-Photo-filter-lightbox-Gallery-plugin -->
 
 </body>

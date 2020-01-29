@@ -62,4 +62,9 @@ class M_update extends CI_Model {
         $this->db->where('id_program', $id);
         $this->db->update('program', $data);  
     }
+
+     public function update_testimoni($id,$object){
+        $this->db->where('id_testimoni', $id);
+        $this->db->update('testimoni', $object);
+    }
 }

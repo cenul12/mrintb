@@ -26,12 +26,12 @@
               <div class="icon">
                 <i class="ion ion-android-people"></i>
               </div>
-              <a href="<?php echo base_url('index.php/admin/daftar_relawan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo site_url('index.php/admin/daftar_relawan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-green">
               <div class="inner">
                 <h3><?php foreach ($jumlah_program as $jp) {
                   echo $jp->jumlah_program;
@@ -41,12 +41,12 @@
               <div class="icon">
                 <i class="ion ion-clipboard"></i>
               </div>
-              <a href="<?php echo base_url('index.php/admin/program') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo site_url('index.php/admin/program') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-yellow">
               <div class="inner">
                  <h3><?php foreach ($jumlah_berita as $jb) {
                   echo $jb->jumlah_berita;
@@ -56,12 +56,12 @@
               <div class="icon">
                 <i class="ion ion-ios-paper"></i>
               </div>
-              <a href="<?php echo base_url('index.php/admin/berita') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo site_url('index.php/admin/berita') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-md-3">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-red">
               <div class="inner">
                 <h3><?php foreach ($jumlah_agenda as $ja) {
                   echo $ja->jumlah_agenda;
@@ -71,16 +71,15 @@
               <div class="icon">
                 <i class="ion ion-ios-book"></i>
               </div>
-              <a href="<?php echo base_url('index.php/admin/agenda') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo site_url('index.php/admin/agenda') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-          </div>
-      
-    </div>
+          </div> 
+      </div>
 
+      <div>
+        <img  img src="<?php echo site_url("assets/img/mri.png")?>" >
+      </div>
 
-
-
-      
     </section>
     <!-- /.content -->
   </div>

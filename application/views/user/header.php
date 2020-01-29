@@ -19,13 +19,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 	</script>
 	<!--//tags -->
-	<link href="<?php echo base_url(); ?>assets/User/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- <link href="<?php echo base_url(); ?>assets/User/dist/sweetalert.css" rel="stylesheet" type="text/css" /> -->
+	<link href="<?php echo site_url(); ?>assets/User/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- <link href="<?php echo site_url(); ?>assets/User/dist/sweetalert.css" rel="stylesheet" type="text/css" /> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link href="<?php echo base_url(); ?>assets/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="<?php echo base_url(); ?>assets/User/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url(); ?>assets/User/css/font-awesome.css" rel="stylesheet">
-	<link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/User/images/mricon.png" />
+	<link href="<?php echo site_url(); ?>assets/User/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?php echo site_url(); ?>assets/User/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo site_url(); ?>assets/User/css/font-awesome.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="<?php echo site_url(); ?>assets/User/images/mricon.png" />
 	<!-- //for bootstrap working -->
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,300,300i,400,400i,500,500i,600,600i,700,800" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700" rel="stylesheet">
@@ -49,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h1> <a class="navbar-brand" href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Conceit <span class="desc">For your Business</span></a></h1>
 					</div> -->
 					<div class="logo-w3layouts-agileits log-height">
-						<a class="navbar-brand " href="<?= site_url('user'); ?>"><img src="<?php echo base_url(); ?>assets/User/images/mri1.png" alt="logo" width=200px></a>
+						<a class="navbar-brand " href="<?= site_url('user'); ?>"><img src="<?php echo site_url(); ?>assets/User/images/mri1.png" alt="logo" width=200px></a>
 					</div>
 				</div>
 

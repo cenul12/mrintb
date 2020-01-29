@@ -36,4 +36,11 @@ class Delete extends CI_Controller {
         redirect('admin/agenda');
    }
 
+   public function testimoni($id){
+        $this->M_delete->testimoni($id);
+        $this->session->set_flashdata('flash','Di Hapus');
+        redirect('admin/testimoni');
+   }
+
+
 }

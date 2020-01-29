@@ -7,32 +7,32 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/Ionicons/css/ionicons.min.css">
-  <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/dist/js/sweetalert2.min.css">  -->
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.min.css">  -->
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/css/skins/_all-skins.min.css">
   <!-- Morris chart -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/morris.js/morris.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/morris.js/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/jvectormap/jquery-jvectormap.css">
   <!-- Date Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/Admin/dist/img/mricon.png" />
+  <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="icon" type="image/png" href="<?php echo site_url(); ?>assets/Admin/dist/img/mricon.png" />
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -61,13 +61,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- <img src="<?php echo base_url(); ?>assets/Img/mri.png" class="user-image" alt="User Image"> -->
+              <!-- <img src="<?php echo site_url(); ?>assets/Img/mri.png" class="user-image" alt="User Image"> -->
               <span class="">Hi, <?php echo $_SESSION['admin']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url(); ?>assets/Img/mri.png" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url(); ?>assets/Img/mri.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION['admin']?>
@@ -80,7 +80,7 @@
                   <a href="#" class="btn btn-default btn-flat">Akun</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= site_url().'login/logout' ?>" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?= site_url().'login/logout' ?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
                 </div>
               </li>
             </ul>
@@ -96,7 +96,7 @@
       <!-- Sidebar user panel -->
       <!-- <div class="user-panel"> -->
        <!--  <div class="pull-left image">
-          <img src="<?php echo base_url(); ?>assets/Img/mri.png" alt="Image">
+          <img src="<?php echo site_url(); ?>assets/Img/mri.png" alt="Image">
         </div> -->
         <!-- <div class="pull-left info">
           <p>Cenul</p>
@@ -133,7 +133,7 @@
 
        <li <?php if($aktif == 'daftar_pengajuan'){echo 'class="active"';} ?>>
           <a href="<?php echo site_url('admin/daftar_pengajuan'); ?>">
-            <i class="fa fa-users"></i> <span>Data Pengajuan</span>
+            <i class="fa fa-user"></i> <span>Data Pengajuan</span>
           </a>
         </li>
 
@@ -146,6 +146,29 @@
         <li <?php if($aktif == 'agenda'){echo 'class="active"';} ?>>
           <a href="<?php echo site_url('admin/agenda'); ?>">
             <i class="fa fa-calendar"></i> <span>Agenda</span>
+          </a>
+        </li>
+        <li <?php if($aktif == 'kirim_notif'){echo 'class="active"';} ?>>
+          <a href="<?= site_url('admin/kirim_notif'); ?>">
+            <i class="fa fa-envelope-o"></i> <span>Kirim Notif</span>
+          </a>
+        </li>
+
+        <li <?php if($aktif == 'laporan'){echo 'class="active"';} ?>>
+          <a href="<?= site_url('admin/laporan'); ?>">
+            <i class="fa  fa-file-o"></i> <span>Laporan</span>
+          </a>
+        </li>
+
+       <!--  <li <?php if($aktif == 'tambah_testimoni'){echo 'class="active"';} ?>>
+          <a href="<?= site_url('admin/tambah_testimoni'); ?>">
+            <i class="fa fa-dashboard"></i> <span>Tambah Testimoni</span>
+          </a>
+        </li> -->
+
+        <li <?php if($aktif == 'testimoni'){echo 'class="active"';} ?>>
+          <a href="<?= site_url('admin/testimoni'); ?>">
+            <i class="fa fa-commenting-o"></i> <span>Testimoni</span>
           </a>
         </li>
          

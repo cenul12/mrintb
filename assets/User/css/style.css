@@ -26,6 +26,9 @@ a:hover {
     text-decoration: none;
 }
 
+.cl{
+    color: rgb(255,255,255);
+}
 /* :: 3.0 Preloader Area CSS */
 /*#loading {
       display: block;
@@ -60,10 +63,21 @@ h6 {
     font-family: 'Raleway', sans-serif;
 } 
 
+.h7 {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+  /*font-family: "Times New Roman", Times, serif;*/
+}
+}
+
 .center{
     text-align: justify;
     margin: 0 auto;
     width: 60%;
+}
+
+.jarak{
+    padding-top: 12px ;
 }
 
 .bg{
@@ -159,6 +173,7 @@ h6 {
 .pd{
     padding-top: 7px;
 }
+
 
 .total{
     background: rgb(204, 0, 0);;
@@ -1757,9 +1772,9 @@ p.copy-right a:hover {
     .test_img_info {
         width: 70%;
     }
-    .test_img_info {
+    /*.test_img_info {
         width: 70%;
-    }
+    }*/
     .inner_sec_info_wthree_agile {
         margin-top: 3em;
     }

@@ -32,7 +32,7 @@
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $value->judul; ?></td>
                                 <td><?php echo date('d F Y', strtotime($value->tanggal)); ?></td>
-                               <!--  <td><img src='<?php echo base_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="30%">
+                               <!--  <td><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="30%">
                                 </td> -->
                                <!--  <td><?php echo $value->hasil_rapat; ?></td> -->
 
@@ -58,7 +58,7 @@
                                         <h3>Pembahasan : <?php echo $value->judul; ?> </h3>
                                         <h3>Tanggal Rapat : <?php echo date('d F Y', strtotime($value->tanggal)); ?> </h3><br>
                                         <center>
-                                        <img src='<?php echo base_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
+                                        <img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
                                         <h4><b> Hasil Rapat</b></h4>
                                         <?php echo $value->hasil_rapat; ?><br>
                                     </div>

@@ -17,54 +17,16 @@ class Update extends CI_Controller {
              
             $this->M_update->update_akun($id,'1');
             redirect('admin/daftar_pengajuan');
-            // $encrypted_id = md5($email);
-            // $this->load->library('email');
-            // $config = array();
-            // $config['charset'] = 'utf-8';
-            // $config['useragent'] = 'Codeigniter';
-            // $config['protocol']= "smtp";
-            // $config['mailtype']= "html";
-            // $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
-            // $config['smtp_port']= "465";
-            // $config['smtp_timeout']= "400";
-            // $config['smtp_user']= "husnulramdani15@gmail.com"; // isi dengan email kamu
-            // $config['smtp_pass']= "mendure00"; // isi dengan password kamu
-            // $config['crlf']="\r\n"; 
-            // $config['newline']="\r\n"; 
-            // $config['wordwrap'] = TRUE;
-            // //memanggil library email dan set konfigurasi untuk pengiriman email
-           
-            // $this->email->initialize($config);
-            // //konfigurasi pengiriman
-            // $this->email->from($config['smtp_user'], 'Admin MRI NTB');
-            // $this->email->to('$email');
-            // $this->email->subject("Verifikasi Akun");
-            // $this->email->message(
-            //  "Keanggotaan dan Akun Anda sebagai Relawan MRI NTB Sudah Aktif,
-            //   Silahkan Login Menggunakan akun Anda. <br>
-            //    <br><br>"
-            //  // .site_url("create/verification/$encrypted_id")
-             
-            // );
-
-            // if($this->email->send())
-            // {
-            //    $this->M_update->update_akun($id,'1');
-            //    redirect('admin/daftar_pengajuan');
-            // }else
-            // {
-            //  echo "gagal"; 
-            // }
 			
 		}
 	}
 
 	public function edit_profil($id){
 	$config['upload_path']          = './assets/Img/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 1000;
-        $config['max_width']            = 1500;
-        $config['max_height']           = 1500;
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        // $config['max_size']             = 1000;
+        // $config['max_width']            = 1500;
+        // $config['max_height']           = 1500;
 
         $this->load->library('upload', $config);
         $this->upload->do_upload('foto');
@@ -72,6 +34,7 @@ class Update extends CI_Controller {
         if (!$this->upload->data('file_name')) {
         	$object = array(
                 'nama_lengkap' => $this->input->post('nama'),
+                'tempat' => $this->input->post('tempat'),
                 'tanggal_lahir' => $this->input->post('lahir'), 
                 'jenis_kelamin' => $this->input->post('jenisk'),
                 'jenis_identitas' => $this->input->post('jenis'),
@@ -79,6 +42,11 @@ class Update extends CI_Controller {
                 'agama' => $this->input->post('agama'),
                 'status' => $this->input->post('status'),
                 'pekerjaan' => $this->input->post('pekerjaan'),
+                'alamat' => $this->input->post('alamat'),
+                'desa' => $this->input->post('desa'),
+                'kecamatan' => $this->input->post('kec'),
+                'kabupaten' => $this->input->post('kab'),
+                'provinsi' => $this->input->post('prov'),
                 'alamat' => $this->input->post('alamat'),
                 'no_hp' => $this->input->post('no_hp'),
                 'email' => $this->input->post('email'),
@@ -87,6 +55,7 @@ class Update extends CI_Controller {
         }else{
         	$object = array(
                 'nama_lengkap' => $this->input->post('nama'),
+                'tempat' => $this->input->post('tempat'),
                 'tanggal_lahir' => $this->input->post('lahir'), 
                 'jenis_kelamin' => $this->input->post('jenisk'),
                 'jenis_identitas' => $this->input->post('jenis'),
@@ -95,6 +64,10 @@ class Update extends CI_Controller {
                 'status' => $this->input->post('status'),
                 'pekerjaan' => $this->input->post('pekerjaan'),
                 'alamat' => $this->input->post('alamat'),
+                'desa' => $this->input->post('desa'),
+                'kecamatan' => $this->input->post('kec'),
+                'kabupaten' => $this->input->post('kab'),
+                'provinsi' => $this->input->post('prov'),
                 'no_hp' => $this->input->post('no_hp'),
                 'email' => $this->input->post('email'),
                 'foto' => $this->upload->data('file_name')
@@ -180,16 +153,82 @@ class Update extends CI_Controller {
         // }
 
         public function edit_program ($id){
+            $config['upload_path']          = './assets/Img/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1000;
+            $config['max_width']            = 1500;
+            $config['max_height']           = 1500;
 
-           $data = array(
-            'nama_program' => $this->input->post('program'),
-            'deskripsi' => $this->input->post('deskripsi'),
-            'keterangan' => $this->input->post('keterangan')
-            );
-        $this->M_update->update_program($id, $data);
-        $this->session->set_flashdata('flash','Di Edit');
-        redirect('admin/program');;
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('foto');
+            
+            if (!$this->upload->data('file_name')) {
+                $data = array(
+                    'nama_program' => $this->input->post('program'),
+                    'deskripsi' => $this->input->post('deskripsi'),
+                    'keterangan' => $this->input->post('keterangan')
+                );
+            }else{
+                $data = array(
+                    'nama_program' => $this->input->post('program'),
+                    'deskripsi' => $this->input->post('deskripsi'),
+                    'keterangan' => $this->input->post('keterangan'),
+                    'foto' => $this->upload->data('file_name')
+                );
+            }
+            $this->M_update->update_program($id, $data);
+            $this->session->set_flashdata('flash','Di Edit');
+            redirect('admin/program');;
 
         }
+
+        public function edit_testimoni($id){
+            $config['upload_path']          = './assets/Img/testimoni';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            // $config['max_size']             = 1000;
+            // $config['max_width']            = 1500;
+            // $config['max_height']           = 1500;
+
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('foto');
+            
+            if (!$this->upload->data('file_name')) {
+                $object = array(
+                    'nama_rel' => $this->input->post('namarelawan'),
+                    'testimoni' => $this->input->post('testimoni'),
+                    // 'foto' => $this->upload->data('file_name')
+                );
+            }else{
+                $object = array(
+                    'nama_rel' => $this->input->post('namarelawan'),
+                    'testimoni' => $this->input->post('testimoni'),
+                    'foto' => $this->upload->data('file_name')
+                );
+            }
+            // print_r($object);        
+            $this->M_update->update_testimoni($id,$object);
+            $this->session->set_flashdata('flash','Di Edit');
+            redirect('admin/testimoni');
+        }
+
+        public function kabupaten()
+        {
+            $this->load->model('M_view'); 
+            $kabupaten = $this->M_view->kabupaten1();
+            echo json_encode($kabupaten);
+        }
+        public function kecamatan()
+        {
+            $this->load->model('M_view'); 
+            $kecamatan = $this->M_view->kecamatan1();
+            echo json_encode($kecamatan);
+        }
+        public function desa()
+        {
+            $this->load->model('M_view'); 
+            $desa = $this->M_view->desa1();
+            echo json_encode($desa);
+        }
+
 
 }

@@ -25,6 +25,20 @@ class M_create extends CI_Model {
         $this->db->insert('agenda',$data);
     }
 
+    // public function coba ($id){
+    //     $this->db->where('id_relawan', $id);
+    //     return $this->db->get('relawan');
+    // }
+
+
+    public function tambah_notif($object){
+        $this->db->insert('notif',$object);
+    }
+
+    public function testimoni($data) {
+        $this->db->insert('testimoni',$data);
+    }
+
 
     
 }

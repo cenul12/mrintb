@@ -30,10 +30,10 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="20%">Judul</th>
+                                <th width="23%">Judul</th>
                                 <th width="15%">Tanggal</th>
                                 <th width="15%">Foto</th>
-                                <th width="10%">Aksi</th>
+                                <th width="7%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,13 +45,14 @@
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $value->judul; ?></td>
                                 <td><?php echo date('d F Y', strtotime($value->tanggal)); ?></td>
-                                <td><img src='<?php echo base_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="40%"></td>
+                                <td><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="40%"></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-rapat<?php echo $value->id_rapat ?>">Lihat
+                                    <center>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-rapat<?php echo $value->id_rapat ?>"><i class="fa  fa-eye"></i>
                                     </button>
 
-                                    <a href='<?php echo base_url().'index.php/Delete/rapat/'.$value->id_rapat?>' > <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');">Hapus</button></a>
-
+                                    <a href="<?= site_url('');?>Delete/rapat/<?php echo $value->id_rapat ?>" > <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');"><i class="fa  fa-trash"></i></button></a>
+                                    </center>
                                     <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-rapat<?php echo $value->id_rapat ?>"><i class="fa  fa-pencil"></i>
                                     </button> -->
                                 </td>
@@ -70,7 +71,7 @@
                                     <!-- data rapat -->                                
                                         <h2>Pembahasan : <?php echo $value->judul; ?></h2> 
                                         <h3>Tanggal : <?php echo date('d F Y', strtotime($value->tanggal)); ?></h3> 
-                                        <img src='<?php echo base_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%">
+                                        <img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%">
                                         <p>Hasil Rapat : </p>
                                         <?php echo $value->hasil_rapat; ?> <br/>
                                     </div>

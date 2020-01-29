@@ -64,7 +64,6 @@
 
       <h3 class="tittle-w3ls we banner_bottom_in ">Tentang Kami</h3>
       <!-- <main> -->
-       
         <ul class="tabs">
           <li class="labels">
               <label class="col-xs-12 col-md-3" for="tab1" id="label1">Tentang MRI</label>
@@ -113,7 +112,7 @@
         <li>
             <input type="radio" name="tabs" id="tab4">  
             <div id="tab-content4" class="tab-content">
-              <img src="<?php echo base_url(); ?>assets/User/images/sebaran.jpg" alt="logo" width=100%>
+              <img src="<?php echo site_url(); ?>assets/User/images/sebaran.jpg" alt="logo" width=100%>
             </div>
         </li>
     </ul>  

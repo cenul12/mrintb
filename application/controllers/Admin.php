@@ -14,7 +14,8 @@ class Admin extends CI_Controller {
 			'jumlah_relawan' => $this->M_view->jumlah_relawan()->result_object(),
 			'jumlah_program' => $this->M_view->jumlah_program()->result_object(),
 			'jumlah_berita' => $this->M_view->jumlah_berita()->result_object(),
-			'jumlah_agenda' => $this->M_view->jumlah_agenda()->result_object()
+			'jumlah_agenda' => $this->M_view->jumlah_agenda()->result_object(),
+			// 'email'=>$this->M_view->notif()->result_object()
 
 		);
 		$this->load->library('session');
@@ -130,6 +131,18 @@ class Admin extends CI_Controller {
 		if(!isset($_SESSION['admin'])){
 			return redirect('user/login');
 		}
+
+		// $id = $this->input->post('nama_lengkap');
+  //       $data= array(
+  //           'data_relawan' => $this->M_view->bio($id)->result_object(),
+  //           'nama_lengkap' => $id
+  //       );
+        // $id = $this->input->post('nama_lengkap');
+        //  $data= array(
+        //     'data_relawan' => $this->M_view->search1($id),
+        //     'nama_lengkap' => $id
+        // );
+		// $data['data_relawan'] = $this->M_view->search($id);
 		
 		$data['data_relawan'] = $this->M_view->relawan()->result_object();
 		$this->load->view('admin/header');
@@ -167,5 +180,62 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/Agenda/agenda',$data);
 		$this->load->view('admin/footer');
 	}
+	public function kirim_notif()
+	{
+		$this->load->library('session');
+		$this->load->helper('url_helper');
+		if(!isset($_SESSION['admin'])){
+			return redirect('user/login');
+		}
+
+		$data['data_relawan'] = $this->M_view->relawan()->result_object();
+		$this->load->view('admin/header');
+		$this->load->view('admin/Notif',$data);
+		$this->load->view('admin/footer');
+	}
+
+	public function laporan()
+	{
+		$this->load->library('session');
+		$this->load->helper('url_helper');
+		if(!isset($_SESSION['admin'])){
+			return redirect('user/login');
+		}
+
+		// $id = $this->input->post('id_relawan');
+		
+		// $id = $this->input->post('nama_lengkap');
+		// $data['data_relawan'] = $this->M_view->bio($id);
+		
+		$this->load->view('admin/header');
+		$this->load->view('admin/Laporan/Data_laporan');
+		$this->load->view('admin/footer');
+	}
+
+	public function testimoni()
+	{
+		$this->load->library('session');
+		$this->load->helper('url_helper');
+		if(!isset($_SESSION['admin'])){
+			return redirect('user/login');
+		}
+		$data['data_testimoni'] = $this->M_view->testimoni()->result_object();
+		$this->load->view('admin/header');
+		$this->load->view('admin/testimoni', $data);
+		$this->load->view('admin/footer');
+	}
+
+	// public function tambah_testimoni()
+	// {
+	// 	$this->load->library('session');
+	// 	$this->load->helper('url_helper');
+	// 	if(!isset($_SESSION['admin'])){
+	// 		return redirect('user/login');
+	// 	}
+	// 	// $data['data_testimoni'] = $this->M_view->testimoni()->result_object();
+	// 	$this->load->view('admin/header');
+	// 	$this->load->view('admin/tambah_testimoni');
+	// 	$this->load->view('admin/footer');
+	// }
 
 }

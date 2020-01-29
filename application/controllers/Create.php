@@ -28,7 +28,6 @@ class Create extends CI_Controller {
 			$this->load->library('upload',$config);
 
 			if(!$this->upload->do_upload('foto')){
-                // redirect('admin/tambah_rapat'); die();
                 echo "gagal upload gambar"; die();
 			}
 			else{
@@ -38,9 +37,6 @@ class Create extends CI_Controller {
 		}
         $this->tambah->tambah_rapat($data);
         $this->session->set_flashdata('flash','Di Tambah');
-        // if($this->db->affected_rows() > 0){
-        //             $this->session->set_flashdata('success','Data Berhasil Ditambah');
-        //         }
         redirect('admin/rapat');
     }
 
@@ -86,55 +82,48 @@ class Create extends CI_Controller {
     }
 
     public function tambah_program(){
-
         $data = array(
             'nama_program' => $this->input->post('program'),
             'deskripsi' => $this->input->post('deskripsi'),
             'keterangan' => $this->input->post('keterangan')
         );
-                
-                    // $this->db->get('email');
-                   
-                $sql = "SELECT email FROM relawan";
-                // return $this->db->query($sql);
+        $foto         =     $_FILES['foto']['name'];
+        if($foto==''){
+            echo "foto gak kebaca"; die();
+        }
+        else{
+          $config['upload_path']    ='assets/Img';
+          $config['allowed_types']  ='jpg|jpeg|png';
+                 // $config['max_size']        = 1000;
+                $config['max_size']             = 1500;
+                // $config['max_width']            = 1500;
+                // $config['max_height']           = 1500;
 
-                $this->load->library('email');
-                    $config = array();
-                    $config['charset'] = 'utf-8';
-                    $config['useragent'] = 'Codeigniter';
-                    $config['protocol']= "smtp";
-                    $config['mailtype']= "html";
-                    $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
-                    $config['smtp_port']= "465";
-                    $config['smtp_timeout']= "400";
-                    $config['smtp_user']= "husnulramdani15@gmail.com"; // 
-                    $config['smtp_pass']= "mendure00"; // 
-                    $config['crlf']="\r\n"; 
-                    $config['newline']="\r\n"; 
-                    $config['wordwrap'] = TRUE;
-                    //memanggil library email dan set konfigurasi untuk pengiriman email
-                    
-                    $this->email->initialize($config);
-                    //konfigurasi pengiriman
-                    $this->email->from($config['smtp_user'], 'Admin MRI NTB'); 
 
-                    $this->email->to($sql);
-                    $this->email->subject("Program Baru");
-                    $this->email->message("$data");
-                
+          $this->load->library('upload',$config);
+          if(!$this->upload->do_upload('foto')){
+                echo "gagal ambil gambar"; die();
+          }
+          else{
+            $foto = $this->upload->data('file_name');
+            $data['foto'] = $foto;
+            }
+        }
+            
             $this->tambah->tambah_program($data);
             $this->session->set_flashdata('flash','Di Tambah');
             redirect('admin/program');
-    }
 
+    }
+           
     public function daftar(){
         if ($this->input->post('password') == $this->input->post('U_password')) {
 
             $config['upload_path']          = './assets/Img/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1000;
-            $config['max_width']            = 1500;
-            $config['max_height']           = 1500;
+            $config['max_size']             = 500;
+            // $config['max_width']            = 1500;
+            // $config['max_height']           = 1500;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('foto');
@@ -143,6 +132,7 @@ class Create extends CI_Controller {
             $this->load->helper(array('form', 'url'));
             $id_relawan = '';
             $nama_lengkap = $this->input->post('nama');
+            $tempat = $this->input->post('tempat');
             $tanggal_lahir = $this->input->post('lahir'); 
             $jenis_kelamin = $this->input->post('jenisk');
             $jenis_identitas = $this->input->post('jenis');
@@ -151,6 +141,10 @@ class Create extends CI_Controller {
             $status = $this->input->post('status');
             $pekerjaan = $this->input->post('pekerjaan');
             $alamat = $this->input->post('alamat');
+            $desa = $this->input->post('desa');
+            $kecamatan = $this->input->post('kec');
+            $kabupaten = $this->input->post('kab');
+            $Provinsi = $this->input->post('prov');
             $no_hp = $this->input->post('no_hp');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
@@ -159,7 +153,8 @@ class Create extends CI_Controller {
 
             $object = array(
                     'id_relawan' =>$id_relawan,
-                    'nama_lengkap' => $nama_lengkap ,
+                    'nama_lengkap' => $nama_lengkap,
+                    'tempat' => $tempat,
                     'tanggal_lahir' => $tanggal_lahir, 
                     'jenis_kelamin' => $jenis_kelamin,
                     'jenis_identitas' => $jenis_identitas,
@@ -168,6 +163,10 @@ class Create extends CI_Controller {
                     'status' => $status,
                     'pekerjaan' => $pekerjaan,
                     'alamat' => $alamat,
+                    'desa' => $desa,
+                    'kecamatan' => $kecamatan,
+                    'kabupaten' => $kabupaten,
+                    'Provinsi' => $Provinsi,
                     'no_hp' => $no_hp,
                     'email' => $email,
                     'password' => $password,
@@ -211,8 +210,10 @@ class Create extends CI_Controller {
              <br><br><br>
              Salam Hormat,<br>
              <br>
-             Direktur ACT NTB <br>"
+             Branch Manager ACT NTB <br>"
              // .site_url("create/verification/$encrypted_id")
+             .site_url("User")
+             
             );
           
             if($this->email->send())
@@ -253,5 +254,46 @@ class Create extends CI_Controller {
         redirect('admin/agenda');
     }
 
+    public function testimoni(){
+
+        $config['upload_path']          = './assets/Img/testimoni';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        // $config['max_size']             = 1000;
+        // $config['max_width']            = 1500;
+        // $config['max_height']           = 1500;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('foto');
+        
+        $data = array (
+            'nama_rel' => $this->input->post('namarelawan'),
+            'testimoni' => $this->input->post('testimoni'),
+            'foto' => $this->upload->data('file_name')
+        );
+              
+        $this->tambah->testimoni($data);
+        $this->session->set_flashdata('flash','Di Tambah');
+        redirect('admin/testimoni');
+    }
+
+
+    public function kabupaten()
+    {
+        $this->load->model('M_view'); 
+        $kabupaten = $this->M_view->kabupaten1();
+        echo json_encode($kabupaten);
+    }
+    public function kecamatan()
+    {
+        $this->load->model('M_view'); 
+        $kecamatan = $this->M_view->kecamatan1();
+        echo json_encode($kecamatan);
+    }
+    public function desa()
+    {
+        $this->load->model('M_view'); 
+        $desa = $this->M_view->desa1();
+        echo json_encode($desa);
+    }
 
 }
