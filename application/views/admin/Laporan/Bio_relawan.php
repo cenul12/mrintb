@@ -4,28 +4,13 @@
     <title>Cetak Biodata Relawan MRI NTB</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" type="image/png" href="<?php echo site_url(); ?>assets/Admin/dist/img/mricon.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        .header {text-align:center;margin-top:70px;margin-bottom:20px;}
         .no {width:150px;}
-        .na {width:270px;}
-        .koma{width:40px;}
-        .foto {width:150px;height:188px;border:1px solid black;margin-top:110px;margin-left:80px;}
-        .nama {text-align:center;margin-top:80px;}
-        .headerr {
-            width:750px;
-            height: 190px;
-            margin-top:100px;
-        }
-        .box {
-            width:144px;
-            height: 110px;
-            border: 1px solid black;
-            margin-left: 100px;
-            text-align: right;
-            padding-top:70px;
-        }
+        .na {width:250px;}
+        .koma{width:20px;}
+        .foto{width:350px;}
     </style>
 </head>
 <body>
@@ -52,30 +37,23 @@
     <hr>
 
     <div class="col-md-12 text-center">
-        <h3>Biodata Relawan</h3>
+        <h3><u>Biodata</u></h3>
     </div>
-    <table style='margin-top:30px;' cellspacing='0' cellpadding='0'>
+    <table style='margin-top:50px; ' >
         <thead>
-            <tr>
-                <th>
-                  
-                </th> 
-                <th style='width:10px; text-align: right;' class="headerr col-sm-2 ">
-                   Foto 3x4
-                </th>
-            </tr>
         </thead>
         <tr>
             <td class='no'></td>
-            <td class='na'>1. Nama Peserta Didik (lengkap)</td>
+            <td class='na'>1. Nama Lengkap</td>
             <td class='koma'>:</td>
-            <td><?= $data->nama_lengkap ?></td>
+            <td class="foto"><?= $data->nama_lengkap ?></td>
+            <td rowspan="5" ><img src="<?php echo site_url()?>assets/Img/relawan/<?php echo $data->foto ?>" height="175px" width="140px" ></td>
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>2. Tanggal Lahir</td>
             <td class='koma'>:</td>
-            <td><?= $data->tanggal_lahir ?></td>
+            <td><?= $data->tempat ?>, <?php echo date('d F Y', strtotime($data->tanggal_lahir)); ?></td>
         </tr>
         <tr>
             <td class='no'></td>
@@ -88,70 +66,52 @@
             <td class='na'>4. Agama</td>
             <td class='koma'>:</td>
             <td><?= $data->agama ?></td>
+            
         </tr>
         <tr>
             <td class='no'></td>
-            <td class='na'>5. Alamat</td>
-            <td class='koma'>:</td>
-            <td style='width:360px;'><?= $data->alamat ?></td>
+            <td class='na' style="padding-bottom: 27px">5. Alamat</td>
+            <td class='koma' style="padding-bottom: 27px">:</td>
+            <td><?= $data->alamat ?>, <?= $data->id_desa ?> <?= $data->id_kec ?> <?= $data->id_kab ?> <?= $data->id_provinsi?></td>
+            
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>6. Jenis Identitas</td>
             <td class='koma'>:</td>
             <td><?= $data->jenis_identitas ?></td>
+           
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>7. Nomor Identitas</td>
             <td class='koma'>:</td>
             <td><?= $data->no_identitas ?></td>
+            
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>8. Status</td>
             <td class='koma'>:</td>
             <td><?= $data->status ?></td>
+            <td></td>
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>9. Pekerjaan</td>
             <td class='koma'>:</td>
             <td><?= $data->pekerjaan ?></td>
+            <td></td>
         </tr>
         <tr>
             <td class='no'></td>
             <td class='na'>10. Nomor Handphone</td>
             <td class='koma'>:</td>
             <td><?= $data->no_hp ?></td>
+            <td></td>
         </tr>
-        
-    </table>
- 
-    
-    <!-- <table style='margin-top:30px;' cellspacing='0' cellpadding='0'>
-        <tr>
-            <td>Nama Lengkap</td>
-            <td class='koma'>:</td>
-            <td><?php echo $data_rel->nama_lengkap ?></td>
-        </tr>
-        <tr>
-            <td>Nama Lengkap</td>
-            <td class='koma'>:</td>
-            <td><?php echo $data_rel->nama_lengkap ?></td>
-        </tr>
-        <tr>
-            <td>Nama Lengkap</td>
-            <td class='koma'>:</td>
-            <td><?php echo $data_rel->nama_lengkap ?></td>
-        </tr>
-        <tr>
-            <td>Nama Lengkap</td>
-            <td class='koma'>:</td>
-            <td><?php echo $data_rel->nama_lengkap ?></td>
-        </tr>
-    </table> -->
-    <div style="float: right;">
+    </table><br><br><br><br>
+    <div style="float: right; margin: 100px;">
         <p>Mataram, . . . . . . . . . . . 2019</p>
         <p>Branch Manager,</p>
 

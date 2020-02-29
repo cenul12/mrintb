@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Sirawan</title>
+	<title>Sistem Informasi Masyarakat Relawan Indonesia - NTB</title>
 
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h1> <a class="navbar-brand" href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Conceit <span class="desc">For your Business</span></a></h1>
 					</div> -->
 					<div class="logo-w3layouts-agileits log-height">
-						<a class="navbar-brand " href="<?= site_url('user'); ?>"><img src="<?php echo site_url(); ?>assets/User/images/mri1.png" alt="logo" width=200px></a>
+						<a class="navbar-brand " href="<?= site_url('user'); ?>"><img src="<?php echo site_url(); ?>assets/User/images/mri1.jpg" alt="logo" style="width: 250px; height: 60px" ></a>
 					</div>
 				</div>
 

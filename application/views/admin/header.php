@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistem Informasi Masyarakat Relawan Indonesia-NTB</title>
+  <title>Administrator - Sistem Informasi MRI NTB</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/font-awesome/css/font-awesome.min.css">
@@ -14,7 +16,7 @@
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/Ionicons/css/ionicons.min.css">
-  <!-- <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.min.css">  -->
+  <!-- <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -28,6 +30,8 @@
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- sweetalert css -->
+  <!-- <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.css"> -->
     <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="<?php echo site_url(); ?>assets/Admin/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- bootstrap wysihtml5 - text editor -->
@@ -67,7 +71,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo site_url(); ?>assets/Img/mri.png" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url(); ?>assets/Img/mricon.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION['admin']?>
@@ -150,7 +154,7 @@
         </li>
         <li <?php if($aktif == 'kirim_notif'){echo 'class="active"';} ?>>
           <a href="<?= site_url('admin/kirim_notif'); ?>">
-            <i class="fa fa-envelope-o"></i> <span>Kirim Notif</span>
+            <i class="fa fa-envelope-o"></i> <span>Kirim Notifikasi</span>
           </a>
         </li>
 
@@ -159,12 +163,6 @@
             <i class="fa  fa-file-o"></i> <span>Laporan</span>
           </a>
         </li>
-
-       <!--  <li <?php if($aktif == 'tambah_testimoni'){echo 'class="active"';} ?>>
-          <a href="<?= site_url('admin/tambah_testimoni'); ?>">
-            <i class="fa fa-dashboard"></i> <span>Tambah Testimoni</span>
-          </a>
-        </li> -->
 
         <li <?php if($aktif == 'testimoni'){echo 'class="active"';} ?>>
           <a href="<?= site_url('admin/testimoni'); ?>">

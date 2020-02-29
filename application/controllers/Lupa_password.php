@@ -8,38 +8,12 @@ class Lupa_password extends CI_Controller {
 
 
             $this->load->helper(array('form', 'url'));
-            // $id_relawan = '';
-            // $nama_lengkap = $this->input->post('nama');
-            // $tanggal_lahir = $this->input->post('lahir'); 
-            // $jenis_kelamin = $this->input->post('jenisk');
-            // $jenis_identitas = $this->input->post('jenis');
-            // $no_identitas = $this->input->post('noidentitas');
-            // $agama = $this->input->post('agama');
-            // $status = $this->input->post('status');
-            // $pekerjaan = $this->input->post('pekerjaan');
-            // $alamat = $this->input->post('alamat');
-            // $no_hp = $this->input->post('no_hp');
             $email = $this->input->post('email');
-            // $password = $this->input->post('password');
-            // $foto = $this->upload->data('file_name');
 
 
             $object = array(
-                    // 'id_relawan' =>$id_relawan,
-                    // 'nama_lengkap' => $nama_lengkap ,
-                    // 'tanggal_lahir' => $tanggal_lahir, 
-                    // 'jenis_kelamin' => $jenis_kelamin,
-                    // 'jenis_identitas' => $jenis_identitas,
-                    // 'no_identitas' => $no_identitas,
-                    // 'agama' => $agama,
-                    // 'status' => $status,
-                    // 'pekerjaan' => $pekerjaan,
-                    // 'alamat' => $alamat,
-                    // 'no_hp' => $no_hp,
+               
                     'email' => $email,
-                    // 'password' => $password,
-                    // 'foto' =>$foto,
-                    // 'status_akun' => 0
             );
              //enkripsi id
             $encrypted_id = md5($email);
@@ -72,7 +46,9 @@ class Lupa_password extends CI_Controller {
           
             if($this->email->send())
             {
-               echo "Silahkan cek email anda untuk reset password";
+               // echo "Silahkan cek email anda untuk reset password";
+                $this->session->set_flashdata('flash','Link reset terkirim, Silahkan cek email anda untuk reset password.'); 
+                redirect ('user/lupa_password');
             }else
             {
                echo "Gagal mengirim email";

@@ -14,7 +14,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
                 <!-- /.row -->
-          <div class="col-md-3">
+          <div class="col-md-4">
             <!-- small box -->
             <div class="small-box bg-aqua">
               <div class="inner">
@@ -29,7 +29,7 @@
               <a href="<?php echo site_url('index.php/admin/daftar_relawan') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
@@ -44,7 +44,7 @@
               <a href="<?php echo site_url('index.php/admin/program') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
@@ -59,7 +59,7 @@
               <a href="<?php echo site_url('index.php/admin/berita') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
@@ -69,15 +69,30 @@
                 <p>Agenda</p>
               </div>
               <div class="icon">
-                <i class="ion ion-ios-book"></i>
+                <i class="ion ion-ios-calendar"></i>
               </div>
               <a href="<?php echo site_url('index.php/admin/agenda') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div> 
+          <div class="col-md-6">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+              <div class="inner">
+                <h3><?php foreach ($jumlah_rapat as $jr) {
+                  echo $jr->jumlah_rapat;
+                } ?></h3>
+                <p>Rapat</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-ios-list"></i>
+              </div>
+              <a href="<?php echo site_url('index.php/admin/rapat') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div> 
       </div>
 
-      <div>
-        <img  img src="<?php echo site_url("assets/img/mri.png")?>" >
+      <div >
+        <img  img src="<?php echo site_url("assets/img/mri1.png")?>" width="100%">
       </div>
 
     </section>

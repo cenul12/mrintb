@@ -22,7 +22,7 @@ class Update extends CI_Controller {
 	}
 
 	public function edit_profil($id){
-	$config['upload_path']          = './assets/Img/';
+    	$config['upload_path']          = './assets/Img/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         // $config['max_size']             = 1000;
         // $config['max_width']            = 1500;
@@ -43,10 +43,10 @@ class Update extends CI_Controller {
                 'status' => $this->input->post('status'),
                 'pekerjaan' => $this->input->post('pekerjaan'),
                 'alamat' => $this->input->post('alamat'),
-                'desa' => $this->input->post('desa'),
-                'kecamatan' => $this->input->post('kec'),
-                'kabupaten' => $this->input->post('kab'),
-                'provinsi' => $this->input->post('prov'),
+                'id_desa' => $this->input->post('des'),
+                'id_kec' => $this->input->post('kec'),
+                'id_kab' => $this->input->post('kab'),
+                'id_provinsi' => $this->input->post('prov'),
                 'alamat' => $this->input->post('alamat'),
                 'no_hp' => $this->input->post('no_hp'),
                 'email' => $this->input->post('email'),
@@ -64,10 +64,10 @@ class Update extends CI_Controller {
                 'status' => $this->input->post('status'),
                 'pekerjaan' => $this->input->post('pekerjaan'),
                 'alamat' => $this->input->post('alamat'),
-                'desa' => $this->input->post('desa'),
-                'kecamatan' => $this->input->post('kec'),
-                'kabupaten' => $this->input->post('kab'),
-                'provinsi' => $this->input->post('prov'),
+                'id_desa' => $this->input->post('des'),
+                'id_kec' => $this->input->post('kec'),
+                'id_kab' => $this->input->post('kab'),
+                'id_provinsi' => $this->input->post('prov'),
                 'no_hp' => $this->input->post('no_hp'),
                 'email' => $this->input->post('email'),
                 'foto' => $this->upload->data('file_name')
@@ -75,7 +75,7 @@ class Update extends CI_Controller {
         }
         // print_r($object);        
         $this->M_update->update_profil($id,$object);
-        $this->session->set_flashdata('flash','Di Edit');
+        $this->session->set_flashdata('flash','Diedit');
         redirect('relawan');
 	}
 
@@ -86,8 +86,10 @@ class Update extends CI_Controller {
                                 'password' => $this->input->post('passwordbaru')
                         );
                         $this->M_update->update_password($key,$data);
-                        echo "Password berhasil diubah";
-                        echo "<br><br><a href='".site_url("user/login")."'>Kembali ke Menu Login</a>";
+                        // echo "Password berhasil diubah";
+                        $this->session->set_flashdata('flash','Password anda berhasil diubah!');
+                        redirect('user/password_baru');
+                        // echo "<br><br><a href='".site_url("user/login")."'>Kembali ke Menu Login</a>";
 
                 }else{
                         echo "password anda tidak cocok"; die();
@@ -104,8 +106,10 @@ class Update extends CI_Controller {
                         );
 
                         $this->M_update->ubah_password($id,$object);
-                        echo "Password berhasil diubah";
-                        echo "<br><br><a href='".site_url("relawan")."'>Kembali ke halaman relawan</a>";
+                        // echo "Password berhasil diubah";
+                        // $this->session->set_flashdata('flash','Password anda berhasil diganti!'); 
+                        redirect('relawan/ganti_password');
+                        // echo "<br><br><a href='".site_url("relawan")."'>Kembali ke halaman relawan</a>";
 
                 }else{
                         echo "password anda tidak cocok"; die();
@@ -127,7 +131,7 @@ class Update extends CI_Controller {
                 );
                      
                 $this->M_update->update_agenda($id, $data);
-                $this->session->set_flashdata('flash','Di Edit');
+                $this->session->set_flashdata('flash','Diedit');
                 redirect('admin/agenda');
         }
 
@@ -177,7 +181,7 @@ class Update extends CI_Controller {
                 );
             }
             $this->M_update->update_program($id, $data);
-            $this->session->set_flashdata('flash','Di Edit');
+            $this->session->set_flashdata('flash','Diedit');
             redirect('admin/program');;
 
         }
@@ -207,28 +211,28 @@ class Update extends CI_Controller {
             }
             // print_r($object);        
             $this->M_update->update_testimoni($id,$object);
-            $this->session->set_flashdata('flash','Di Edit');
+            $this->session->set_flashdata('flash', 'Diedit');
             redirect('admin/testimoni');
         }
 
-        public function kabupaten()
-        {
-            $this->load->model('M_view'); 
-            $kabupaten = $this->M_view->kabupaten1();
-            echo json_encode($kabupaten);
-        }
-        public function kecamatan()
-        {
-            $this->load->model('M_view'); 
-            $kecamatan = $this->M_view->kecamatan1();
-            echo json_encode($kecamatan);
-        }
-        public function desa()
-        {
-            $this->load->model('M_view'); 
-            $desa = $this->M_view->desa1();
-            echo json_encode($desa);
-        }
+        // public function kabupaten()
+        // {
+        //     $this->load->model('M_view'); 
+        //     $kabupaten = $this->M_view->kabupaten1();
+        //     echo json_encode($kabupaten);
+        // }
+        // public function kecamatan()
+        // {
+        //     $this->load->model('M_view'); 
+        //     $kecamatan = $this->M_view->kecamatan1();
+        //     echo json_encode($kecamatan);
+        // }
+        // public function desa()
+        // {
+        //     $this->load->model('M_view'); 
+        //     $desa = $this->M_view->desa1();
+        //     echo json_encode($desa);
+        // }
 
 
 }

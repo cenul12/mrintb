@@ -18,9 +18,7 @@
                                 <th width="5%">No</th>
                                 <th width="30%">Judul</th>
                                 <th width="15%">Tanggal</th>
-                                <!-- <th width="15%">Foto</th> -->
-                                <!-- <th width="35%">Hasil</th> -->
-                                <th width="10%">Aksi</th>
+                                <th width="5%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,15 +30,11 @@
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $value->judul; ?></td>
                                 <td><?php echo date('d F Y', strtotime($value->tanggal)); ?></td>
-                               <!--  <td><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="30%">
-                                </td> -->
-                               <!--  <td><?php echo $value->hasil_rapat; ?></td> -->
-
                                 <td>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-rapat<?php echo $value->id_rapat ?>">Lihat
-                                    </button>
-
-                                    <!-- <button type="button" class="btn btn-danger"><i class="fa  fa-pencil"></i></button> -->
+                                    <center>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihat-rapat<?php echo $value->id_rapat ?>"><i class="fa fa-eye"></i> Lihat
+                                        </button>
+                                    </center>
                                 </td>
                             </tr>
 
@@ -58,7 +52,7 @@
                                         <h3>Pembahasan : <?php echo $value->judul; ?> </h3>
                                         <h3>Tanggal Rapat : <?php echo date('d F Y', strtotime($value->tanggal)); ?> </h3><br>
                                         <center>
-                                        <img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
+                                        <img src='<?php echo site_url()?>assets/Img/rapat/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
                                         <h4><b> Hasil Rapat</b></h4>
                                         <?php echo $value->hasil_rapat; ?><br>
                                     </div>

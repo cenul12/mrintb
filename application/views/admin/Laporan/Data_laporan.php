@@ -24,28 +24,28 @@
                                     <td>1</td>
                                     <td>Cetak Semua Data Relawan</td>
                                     <td style="text-align: center">
-                                        <a href="<?php echo base_url('Laporan/relawan') ?>" target="_blank" class= "btn btn-primary"><i class="glyphicon glyphicon-print"></i> Cetak</a>
+                                        <a href="<?php echo base_url('Laporan/relawan') ?>" target="_blank" class= "btn btn-info"><i class="glyphicon glyphicon-print"></i> Cetak</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Cetak Semua Data Program</td>
                                     <td style="text-align: center">
-                                        <a href="<?php echo base_url('Laporan/program') ?>" target="_blank" class= "btn btn-primary"><i class="glyphicon glyphicon-print"></i> Cetak</a>
+                                        <a href="<?php echo base_url('Laporan/program') ?>" target="_blank" class= "btn btn-info"><i class="glyphicon glyphicon-print"></i> Cetak</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>Cetak Semua Data Rapat</td>
                                     <td style="text-align: center">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetak_rapat"><i class="glyphicon glyphicon-print"></i> Cetak</button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cetak_rapat"><i class="glyphicon glyphicon-print"></i> Cetak</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Cetak Semua Data Agenda</td>
                                     <td style="text-align: center">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cetak_agenda"><i class="glyphicon glyphicon-print"></i> Cetak</button>
+                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#cetak_agenda"><i class="glyphicon glyphicon-print"></i> Cetak</button>
                                     </td>
                                 </tr>
                             </tbody>

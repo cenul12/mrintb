@@ -12,7 +12,7 @@
                     <h3 class="box-title">Daftar Pengajuan</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class=" box-body">
+                <div class=" box-body table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -21,7 +21,7 @@
                                 <th width="15%">No HP</th>
                                 <th width="15%">Email</th>
                                 <th width="20%">Alamat</th>
-                                <th width="14%">Aksi</th>
+                                <th width="16%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,9 +36,9 @@
                                 <td><?php echo $value->alamat; ?></td> 
                                 <td>
                                     <center>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-data<?php echo $value->id_relawan ?>"><i class="fa  fa-eye"></i>Lihat</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihat-data<?php echo $value->id_relawan ?>" style="margin: 4px"><i class="fa  fa-eye"></i> Lihat</button>
 
-                                    <a href="<?php echo site_url()?>Update/status_akun/<?php echo $value->id_relawan?>/1"><button type="button" class="btn btn-success" onclick="return confirm('apakah anda yakin ingin verifikasi?');"><i class="fa  fa-check-square-o"></i>Terima</button></a>
+                                        <a href="<?php echo site_url()?>Update/status_akun/<?php echo $value->id_relawan?>/1" type="button" class="btn btn-success tombol_terima"><i class="fa  fa-check-square-o"></i> Terima</a>
                                     </center>
 
                                 </td>
@@ -138,7 +138,7 @@
                                             <div class=" row col-md-12">
                                                 <label class="col-md-3 control-label">Alamat Lengkap</label> 
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="alamat" value="<?= $value->alamat; ?> <?= $value->desa; ?> <?= $value->kecamatan; ?> <?= $value->kabupaten; ?> <?= $value->provinsi; ?>" disabled><?= $value->alamat; ?>, <?= $value->desa; ?>, <?= $value->kecamatan; ?>, <?= $value->kabupaten; ?>, <?= $value->provinsi; ?>
+                                                    <textarea class="form-control" name="alamat" value="<?= $value->alamat; ?> <?= $value->id_desa; ?> <?= $value->id_kec; ?> <?= $value->id_kab; ?> <?= $value->id_provinsi; ?>" disabled><?= $value->alamat; ?>, Desa <?= $value->id_desa; ?>, <?= $value->id_kec; ?>, <?= $value->id_kab; ?>, <?= $value->id_provinsi; ?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -146,7 +146,7 @@
                                         <div class="box-body">
                                             <div class=" row col-md-12">
                                             <center>
-                                                <img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="40%">
+                                                <img src='<?php echo site_url()?>assets/Img/relawan/<?php echo $value->foto; ?>' style="width: 150px; height:auto; ">
                                             </center>
                                             </div>
                                         </div>

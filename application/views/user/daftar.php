@@ -1,47 +1,58 @@
 
-<div class="banner_bottom bg-dftr">
-    <!-- <div class="container"> -->
-            <!-- <div class="tittle-w3ls_head"> -->
-        <!-- </div> --><br><br>
-        <style type="text/css">
-                main {
-                  background: #FFF;
-                  width: 70%;
-                  margin: 1px auto;
-                  padding: 20px 0px 20px;
-                  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-                  /*border: 1px solid #212020;*/
-                }
-                #output_image
-                {
-                 max-width: 170px;
-                 border: 1px solid #808080;
-                 border-radius: 3px;
-                 padding: 5px; 
-                 max-height: 100%;
+<div class="banner_bottom bg-dftr"><br><br><br><br>
+    <style type="text/css">
 
+            main {
+              background: #FFF;
+              width: 900px;
+              margin: 1px auto;
+              padding: 10px 0px 10px;
+              box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+              /*border: 1px solid #212020;*/
+            }
+            @media(max-width:1080px){
+                main{
+                    width: 800px;
+                    height: 1600px;
                 }
-        </style>
-        <main>
-        <div class="inner_sec_info_wthree_agile ">
+            }
+            @media(max-width:900px){
+                main{
+                    width: auto;
+                    height: auto;
+                }
+            }
+
+            #output_image
+            {
+             max-width: 170px; 
+             border: 1px solid #808080;
+             border-radius: 3px;
+             padding: 5px; 
+             max-height: 100%;
+
+            }
+    </style>
+    <main>
+        <div class="inner_sec_info_wthree_agile">
             <div class="signin-form" >
                 <div class="login-form-rec">
                     
                     <h3 class="tittle-w3ls ">Form Pendaftaran Relawan</h3>
                     <form action="<?= site_url('create/daftar'); ?>" method="post" enctype="multipart/form-data">
                         <div class="row">
-                            <div class="col-md-12 col-xs-12 ">
+                            <div class="col-md-12">
                                 <label>Nama Lengkap</label>
                                 <input type="text" name="nama" class="form-control" required="" placeholder="Nama Lengkap Anda">
                             </div>
                         </div><br>
 
                         <div class="row">
-                            <div class="col-md-6 col-xs-12">
+                            <div class="col-md-6">
                                 <label>Tempat</label>
                                 <input type="text" name="tempat" class="form-control" required="" placeholder="Tempat Lahir">
                             </div> 
-                            <div class="col-md-6 col-xs-12" style="padding-top: 7px;">
+                            <div class="col-md-6 " style="padding-top: 7px;">
                                 <label>Tanggal Lahir</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
@@ -55,7 +66,7 @@
                         <div class="row">
                             <div class=" pd col-md-12 col-xs-12">
                                 <label>Jenis Kelamin</label>
-                                <select name="jenisk" class="form-control" required="">
+                                <select name="jenisk" class="form-control" required>
                                     <option value="tidak ada">Pilih</option>
                                     <option value="Laki - Laki">Laki - Laki</option>
                                     <option value="Perempuan">Perempuan</option>
@@ -66,7 +77,7 @@
                         <div class="row">
                             <div class=" pd col-md-6 col-xs-12">
                                 <label>Jenis Identitas</label>
-                                <select name="jenis" class="form-control" required="">
+                                <select name="jenis" class="form-control" required>
                                     <option value="0">Pilih</option>
                                     <option value="KTP">KTP</option>
                                     <option value="SIM">SIM</option>
@@ -117,52 +128,52 @@
                                     <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
-
                         </div><br>
 
                         <!-- <form action="<?= site_url('User/daftar'); ?>" method="post" enctype="multipart/form-data"> -->
                             <div class="row">
                                 <div class=" col-md-6 col-xs-12">
                                     <label>Provinsi</label>
-                                        <select name="prov" id="prov" class="form-control" onchange="provinsi()" >
+                                        <select name="prov" id="prov" class="form-control" onchange="kabupaten()">
                                             <option disabled selected>Pilih</option>
                                             <?php
                                                 foreach ($data_prov as $prov) { 
                                             ?>
                                             <option value="<?php echo $prov->id_provinsi ?>"><?php echo $prov->nama_provinsi ?></option>
                                             <?php } ?>
+                                             
                                         </select>
                                 </div>
 
                                 <div class=" col-md-6 col-xs-12">
                                     <label>Kabupaten</label>
-                                    <div id="kabupaten"></div>
-                                    <div id="kabupaten1">
-                                        <select class="form-control" onchange="kecamatan()">
-                                            <option disabled selected>Pilih</option>
+                                    <!-- <div id="kabupaten1"></div>
+                                    <div id="kabupaten"> -->
+                                        <select name="kab" id="kab" class="form-control" onchange="kecamatan()">
+                                            <option selected>Pilih</option>
                                         </select>
-                                    </div>
+                                    <!-- </div> -->
                                 </div> 
                             </div><br>
 
                             <div class="row">
                                 <div class=" col-md-6 col-xs-12">
                                     <label>Kecamatan</label>
-                                    <div id="kecamatan"></div>
-                                    <div id="kecamatan1">
-                                        <select class="form-control" required >
-                                            <option disabled selected>Pilih</option>
+                                  <!--   <div id="kecamatan1"></div>
+                                    <div id="kecamatan"> -->
+                                        <select name="kec" id="kec" class="form-control" onchange="desa()" required>
+                                            <option selected>Pilih</option>
                                         </select>
-                                    </div>
+                                    <!-- </div> -->
                                 </div> 
                                 <div class="col-md-6 col-xs-12">
                                     <label>Desa</label>
-                                    <div id="desa"></div>
-                                    <div id="desa1">
-                                        <select  class="form-control" required >
-                                            <option disabled selected>Pilih</option>
+                                    <!-- <div id="desa1"></div>
+                                    <div id="desa"> -->
+                                        <select name="des" id="des" class="form-control" required>
+                                            <option selected>Pilih</option>
                                         </select>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>   
                             </div><br>
 
@@ -213,7 +224,6 @@
                             <input type="checkbox" required=""> Telah Menyetujui syarat & ketentuan sebagai relawan
                           </label>
                         </div>
-                        <!-- <p>Silahkan Baca Syarat & Ketentuan Sebelum Klik Tombol <b>Submit</b></p> -->
                         <div class="sy">
                             <p><b>Syarat dan Ketentuan klik <a href="<?= site_url('user/syarat'); ?>">disini!</a></b></p> 
                         </div>
@@ -293,27 +303,25 @@
             email.focus;
             return false;
         }
-    }
+    } 
 
-    function provinsi()
+    function kabupaten()
     {
         var id_provinsi = $('#prov').val();
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Create/kabupaten')?>',
+            url  : '<?php echo site_url('User/kabupaten')?>',
             dataType: 'JSON',
             data : {id_provinsi: id_provinsi},
-            success: function (kabupaten){
+            success: function (data){
                 var html = '';
-                html += '<select name="kab" id="kab" class="form-control" onchange="kecamatan()">';
                 html += '<option value="">Pilih</option>';
                 var i;
-                for (i=0; i<kabupaten.length; i++){
-                    html += '<option value="'+kabupaten[i].id_kab+'">'+kabupaten[i].nama_kabupaten+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kab+'">'+data[i].nama_kabupaten+'</option>';
                 }
-                $('#kabupaten1').hide();
-                $('#kabupaten').html(html);
+                $('#kab').html(html);
             }
         });
         kecamatan();
@@ -326,19 +334,17 @@
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Create/kecamatan')?>',
+            url  : '<?php echo site_url('User/kecamatan')?>',
             dataType: 'JSON',
             data : {id_kab: id_kab},
-            success: function (kecamatan){
+            success: function (data){
                 var html = '';
-                html += '<select name="kec" id="kec" class="form-control" onchange="desa()">';
                 html += '<option value="">Pilih</option>';
                 var i;
-                for (i=0; i<kecamatan.length; i++){
-                    html += '<option value="'+kecamatan[i].id_kec+'">'+kecamatan[i].nama_kecamatan+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kec+'">'+data[i].nama_kecamatan+'</option>';
                 }
-                $('#kecamatan1').hide();
-                $('#kecamatan').html(html);
+                $('#kec').html(html);
             }
         });
         desa();
@@ -347,28 +353,24 @@
     function desa()
     {
         var id_kec = $('#kec').val();
-        
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Create/desa')?>',
+            url  : '<?php echo site_url('User/desa')?>',
             dataType: 'JSON',
             data : {id_kec: id_kec},
-            success: function (desa){
+            success: function (data){
                 var html = '';
-                html += '<select  class="form-control" >';
                 html += '<option value="">Pilih</option>';
                 var i;
-                for (i=0; i<desa.length; i++){
-                    html += '<option value="'+desa[i].id_desa+'">'+desa[i].nama_desa+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
                 }
-                $('#desa1').hide();
-                $('#desa').html(html);
+                $('#des').html(html);
             }
         });
     }
     
-
 </script>
 
 

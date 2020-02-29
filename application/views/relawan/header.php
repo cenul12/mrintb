@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistem Informasi Relawan MRI NTB</title>
+  <title>Relawan - Sistem Informasi MRI NTB</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -64,7 +64,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo site_url()?>assets/Img/<?php echo $data_relawan['foto']?>" class="img-circle" alt="User Image">
+                <img src="<?php echo site_url()?>assets/Img/relawan/<?php echo $data_relawan['foto']?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $data_relawan['nama_lengkap']?>
@@ -78,7 +78,7 @@
                   <a href="<?= site_url().'/relawan/ganti_password' ?>" class="btn btn-default btn-flat">Akun</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?= site_url().'login/logout'  ?>" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?= site_url().'login/logout'  ?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
                 </div>
               </li>
             </ul>

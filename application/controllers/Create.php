@@ -19,10 +19,10 @@ class Create extends CI_Controller {
         );
         $foto 				=     $_FILES['foto']['name'];
 		if($foto==''){
-            echo "foto gak kebaca"; die();
+            echo "foto gak kebaca"; die(); 
 		}
 		else{
-			$config['upload_path']		='assets/Img';
+			$config['upload_path']		='assets/Img/rapat';
 			$config['allowed_types']	='jpg|jpeg|png';
 
 			$this->load->library('upload',$config);
@@ -36,11 +36,12 @@ class Create extends CI_Controller {
             }
 		}
         $this->tambah->tambah_rapat($data);
-        $this->session->set_flashdata('flash','Di Tambah');
+        $this->session->set_flashdata('flash','Ditambahkan');
         redirect('admin/rapat');
     }
 
     public function tambah_berita(){
+        $this->load->helper('slug');
         // $ambil = $this->input->post('tanggal');
         // $bulan = substr($ambil, 0,2);
         // $tanggal = substr($ambil, 3,2); 
@@ -49,18 +50,23 @@ class Create extends CI_Controller {
         $data = array(
 
             'judul_berita' => $this->input->post('berita'),
+            'keterangan' => $this->input->post('keterangan'),
             'tanggal' => date('Y-m-d'),
-            'isi_berita' => $this->input->post('isi_berita')
+            'isi_berita' => $this->input->post('isi_berita'),
+            'penulis' => $this->input->post('penulis'),
+            'editor' => $this->input->post('editor'),
+            'slug_judul' => slug($this->input->post('berita'))
         );
-        $foto 				=     $_FILES['foto']['name'];
+
+        $foto = $_FILES['foto']['name'];
 		if($foto==''){
             echo "foto gak kebaca"; die();
 		}
 		else{
-			$config['upload_path']		='assets/Img';
+			$config['upload_path']		='assets/Img/berita';
 			$config['allowed_types']	='jpg|jpeg|png';
              // $config['max_size']        = 1000;
-            $config['max_size']             = 1500;
+            $config['max_size']             = 5000;
             // $config['max_width']            = 1500;
             // $config['max_height']           = 1500;
 
@@ -75,8 +81,9 @@ class Create extends CI_Controller {
 				$data['foto'] = $foto;
             }
 		}
+
         $this->tambah->tambah_berita($data);
-        $this->session->set_flashdata('flash','Di Tambah');
+        $this->session->set_flashdata('flash','Ditambahkan');
 
         redirect('admin/berita');
     }
@@ -92,10 +99,10 @@ class Create extends CI_Controller {
             echo "foto gak kebaca"; die();
         }
         else{
-          $config['upload_path']    ='assets/Img';
+          $config['upload_path']    ='assets/Img/program';
           $config['allowed_types']  ='jpg|jpeg|png';
                  // $config['max_size']        = 1000;
-                $config['max_size']             = 1500;
+                $config['max_size']             = 5000;
                 // $config['max_width']            = 1500;
                 // $config['max_height']           = 1500;
 
@@ -111,7 +118,7 @@ class Create extends CI_Controller {
         }
             
             $this->tambah->tambah_program($data);
-            $this->session->set_flashdata('flash','Di Tambah');
+            $this->session->set_flashdata('flash','Ditambahkan');
             redirect('admin/program');
 
     }
@@ -119,9 +126,9 @@ class Create extends CI_Controller {
     public function daftar(){
         if ($this->input->post('password') == $this->input->post('U_password')) {
 
-            $config['upload_path']          = './assets/Img/';
+            $config['upload_path']          = './assets/Img/relawan';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 500;
+            $config['max_size']             = 5000;
             // $config['max_width']            = 1500;
             // $config['max_height']           = 1500;
 
@@ -140,11 +147,11 @@ class Create extends CI_Controller {
             $agama = $this->input->post('agama');
             $status = $this->input->post('status');
             $pekerjaan = $this->input->post('pekerjaan');
-            $alamat = $this->input->post('alamat');
-            $desa = $this->input->post('desa');
-            $kecamatan = $this->input->post('kec');
-            $kabupaten = $this->input->post('kab');
-            $Provinsi = $this->input->post('prov');
+            $alamat = $this->input->post('alamat'); 
+            $id_desa = $this->input->post('des');
+            $id_kec = $this->input->post('kec');
+            $id_kab = $this->input->post('kab');
+            $id_provinsi = $this->input->post('prov');
             $no_hp = $this->input->post('no_hp');
             $email = $this->input->post('email');
             $password = $this->input->post('password');
@@ -163,17 +170,16 @@ class Create extends CI_Controller {
                     'status' => $status,
                     'pekerjaan' => $pekerjaan,
                     'alamat' => $alamat,
-                    'desa' => $desa,
-                    'kecamatan' => $kecamatan,
-                    'kabupaten' => $kabupaten,
-                    'Provinsi' => $Provinsi,
+                    'id_desa' => $id_desa,
+                    'id_kec' => $id_kec,
+                    'id_kab' => $id_kab,
+                    'id_provinsi' => $id_provinsi,
                     'no_hp' => $no_hp,
                     'email' => $email,
                     'password' => $password,
                     'foto' =>$foto,
                     'status_akun' => 0
             );
-            // redirect('user');
 
              //enkripsi id
             $encrypted_id = md5($email);
@@ -215,19 +221,20 @@ class Create extends CI_Controller {
              .site_url("User")
              
             );
+
           
             if($this->email->send())
             {
-               echo "Pendaftaran Berhasil, silahkan cek email anda";
+                $this->tambah->daftar($object);
+               redirect('user/berhasil');
+                // echo "Berhasil melakukan registrasi";
             }else
             {
-               echo "Berhasil melakukan registrasi, namun gagal mengirim verifikasi email";
+               echo "Gagal melakukan pendaftaran";
             }
           
             echo "<br><br><a href='".site_url("user")."'>Kembali ke Home</a>";
 
-            $this->tambah->daftar($object);
-            // redirect('user/daftar?status=sukses');
         } 
     }
 
@@ -250,7 +257,7 @@ class Create extends CI_Controller {
             'agenda' => $this->input->post('agenda')
         );
         $this->tambah->tambah_agenda($data);
-        $this->session->set_flashdata('flash','Di Tambah');
+        $this->session->set_flashdata('flash','Ditambahkan');
         redirect('admin/agenda');
     }
 
@@ -272,28 +279,9 @@ class Create extends CI_Controller {
         );
               
         $this->tambah->testimoni($data);
-        $this->session->set_flashdata('flash','Di Tambah');
+        $this->session->flashdata('flash', 'Ditambahkan');
         redirect('admin/testimoni');
     }
 
-
-    public function kabupaten()
-    {
-        $this->load->model('M_view'); 
-        $kabupaten = $this->M_view->kabupaten1();
-        echo json_encode($kabupaten);
-    }
-    public function kecamatan()
-    {
-        $this->load->model('M_view'); 
-        $kecamatan = $this->M_view->kecamatan1();
-        echo json_encode($kecamatan);
-    }
-    public function desa()
-    {
-        $this->load->model('M_view'); 
-        $desa = $this->M_view->desa1();
-        echo json_encode($desa);
-    }
 
 }

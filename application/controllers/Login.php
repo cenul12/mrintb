@@ -28,7 +28,8 @@ class Login extends CI_Controller {
                 );
     		$this->session->set_userdata($user_data);
     		$this->load->helper('url');
-            
+
+            // $this->session->set_flashdata('flash', 'Masuk');
     		redirect('relawan');
     	}
 
@@ -36,25 +37,20 @@ class Login extends CI_Controller {
     		$data=$cek_admin->row_array();
     		$this->session->set_userdata('masuk', TRUE);
 
-    		$this->session->set_userdata('ses_user',$data['email']);
+    		$this->session->set_userdata('ses_user',$data['username']);
     		$this->session->set_userdata('ses_password',$data['password']);
+           
     		$_SESSION['admin'] = $data['username'];
-    		$this->load->helper('url');
-                
+    		// $this->load->helper('url');
+            // $this->session->set_flashdata('flash','Masuk');
     		redirect('admin');
+
     	}
     	else{
-            // $this->session->set_flashdata('error','email or password is wrong');
-            // if($this->db->affected_rows() > 0){
-            //         $this->session->set_flashdata('success','email or password is good');
-            //     }
-            $this->session->set_flashdata('flash','Email atau Password Anda Salah');
-    		redirect('user/login');
 
-            // echo ("Akun anda belum aktif!!");
-
-            
-            
+             $this->session->set_flashdata('flash','Email atau Password Anda Salah!'); 
+    		// redirect('user/login');
+            redirect('user/login');
     	}
     }
 

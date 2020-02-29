@@ -11,20 +11,21 @@
                     <h3 class="box-title">Daftar Agenda</h3>
                 </div>
                 <!-- /.box-header -->
-                <?php if($this->session->flashdata('flash')) : ?>
+                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+                <!-- <?php if($this->session->flashdata('flash')) : ?>
                 <div class="box-body">
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         Data Berhasil <strong><?= $this->session->flashdata('flash'); ?></strong>.
                     </div> 
                 </div>
-                <?php endif; ?>
+                <?php endif; ?> -->
 
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#tambah-agenda">Tambah Data
+                    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#tambah-agenda"><i class="glyphicon glyphicon-plus"></i> Tambah Data
                     </button>
                 </div>
-
+                <br><br>
                 <form action="<?= site_url('Admin/agenda'); ?>"  method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     <div class="box-body">
                         <h4 style="text-align: center;">Silahkan Pilih tanggal agenda yang ingin dilihat :</h4>
@@ -43,7 +44,7 @@
                             </div>
                         </div>
                         <div class="box-footer" >
-                            <button type="submit" class="btn btn-primary pull-right">Lihat</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="lihat"><i class="glyphicon glyphicon-search"></i> Cari</button>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -91,7 +92,7 @@
                                 <div class="row col-md-12">
                                     <label class="col-md-2 control-label">Agenda</label>
                                     <div class="col-md-8">
-                                        <textarea type="text"   name="agenda" class="form-control"></textarea>
+                                        <textarea id="editor1" type="text"   name="agenda" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +117,9 @@
           <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Daftar Agenda Tanggal : <?php echo date('d F Y', strtotime($tanggal_agenda)); ?></h3>
+                    <h3 class="box-title">Daftar Agenda Tanggal : <?php echo date('d F Y', strtotime($tanggal_agenda)); ?>
+                            
+                    </h3>
                 </div>
                 <!-- /.box-header -->
                     <div class="box-body table-responsive">
@@ -138,12 +141,11 @@
                                     <td><?= $da->tempat ?></td>
                                     <td><?= $da->agenda ?></td>
                                     <td>
-                                        <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-program<?php echo $value->id_program ?>"><i class="fa  fa-eye"></i>
-                                        </button> -->
+                                        <center>
+                                            <a href="<?= site_url('');?>Delete/agenda/<?php echo $da->id_agenda ?>" type="button" class="btn btn-danger tombol_hapus" style="margin: 4px"><i class="fa  fa-trash"></i></a>
 
-                                        <a href="<?= site_url('');?>Delete/agenda/<?php echo $da->id_agenda ?>"> <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');"><i class="fa  fa-trash"></i></button></a>
-
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit-agenda<?php echo $da->id_agenda ?>" ><i class="fa  fa-edit"></i></button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit-agenda<?php echo $da->id_agenda ?>" ><i class="fa  fa-edit"></i></button>
+                                        </center>
                                     </td>
                                 </tr>
 
@@ -188,7 +190,7 @@
                                                 <div class="row col-md-12">
                                                     <label class="col-md-3 control-label">Agenda   </label> 
                                                     <div class="col-md-9">
-                                                        <textarea type="text" name="agenda_edit" id="agenda_edit" class="form-control" ><?php echo $da->agenda ?></textarea>
+                                                        <textarea id="editor2" type="text" name="agenda_edit" class="form-control" ><?php echo $da->agenda ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>

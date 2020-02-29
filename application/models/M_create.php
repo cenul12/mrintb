@@ -17,8 +17,8 @@ class M_create extends CI_Model {
         $this->db->insert('program',$data);
     }
 
-    public function daftar($data){
-        $this->db->insert('relawan',$data);
+    public function daftar($object){
+        $this->db->insert('relawan',$object);
     }
 
     public function tambah_agenda($data){

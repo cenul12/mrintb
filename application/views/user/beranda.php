@@ -1,5 +1,5 @@
 	<!-- banner -->
-	<div id="myCarousel" class="carousel slide  responsive" data-ride="carousel">
+	<div id="myCarousel" class="carousel slide " data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -53,7 +53,7 @@
 	</div>
 	<!--//banner -->
 	<!--/ab-->
-	<div class="banner_bottom proj">
+	<div class=" banner_bottom proj">
 		<div class="wrap_view">
 			<style type="text/css">
 				.main {
@@ -61,12 +61,25 @@
 	              position: static;
 				  padding: 13px 10px 20px;
 				  height: 580px;
-				  width: 400Px;
+				  width: 380Px;
 				  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
 	            }
 	            .main:hover {
 				  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 				}
+				@media(max-width:1080px){
+					.main{
+						width: 310px;
+						height: 370px;
+					}
+				}
+				@media(max-width:900px){
+					.main{
+						width: auto;
+						height: auto;
+					}
+				}
+
 			</style>
 			<!-- <div class="row"> -->
 				<h3 class="tittle-w3ls">Berita</h3>
@@ -74,13 +87,19 @@
 					if ($i <=3 ) { ?>
 				<div class="col-md-4 banner_bottom_left">
 						<div class="banner_bottom_pos main">
-							<div class="banner_bottom_pos_grid ">
-								<a href="<?= site_url('user/detail_berita/'.$db->id_berita.''); ?>"> 
-									<img src="<?php echo site_url(); ?>assets/Img/<?= $db->foto ?>" class="img-responsive" alt="Conceit" width="100%">
+							<div class="banner_bottom_pos_grid">
+								<a href="<?= site_url('user/detail_berita/'.$db->id_berita.'/'.$db->slug_judul.''); ?>"> 
+									<div>
+										<center>
+											<img src="<?php echo site_url(); ?>assets/Img/berita/<?= $db->foto ?>" class="img-responsive" alt="Conceit" style=" width: 360px; height: 230px;">
+										</center>
+									</div>
 								</a>
 									<div class=" banner_bottom_grid_right ">
-										<a href="<?= site_url('user/detail_berita/'.$db->id_berita.''); ?>"> 
-											<h3 class="wr"><?=$db->judul_berita?></h3>
+										<a href="<?= site_url('user/detail_berita/'.$db->id_berita.'/'.$db->slug_judul.''); ?>"> 
+											<center>
+												<h4 class="wr"><?=$db->judul_berita?></h4>
+											</center>
 										</a>
 										<?php
 									      if(substr($db->tanggal,5,2) == '01'){
@@ -111,10 +130,12 @@
 									    ?>
 									    <?php $tahun = substr($db->tanggal,0,4) ?>
 									    <?php $tanggal = substr($db->tanggal,8,2) ?>
-										<p class="db" style="color: red"><i class="fa fa-user"></i> Redaksi MRI <i class="fa fa-calendar"></i><?php echo ' ', $tanggal,' ', $bulan,' ', $tahun ?></p>
+										<p  style="color: rgb(251, 140, 1)"><i class="fa fa-user"></i> <?= $db->penulis ?>  <i class="fa fa-calendar"></i><?php echo ' ', $tanggal,' ', $bulan,' ', $tahun ?></p>
 									</div>
-									<p> <?php $konten=substr($db->isi_berita, 0, 130); echo $konten; ?>....<a href="<?= site_url('user/detail_berita/'.$db->id_berita.''); ?>">Read More</a>
-									</p>
+									<div style="text-align: justify; color: black;font-family: sans-serif;">
+										<p> <?php $konten=substr($db->isi_berita, 0, 130); echo $konten; ?>....<a href="<?= site_url('user/detail_berita/'.$db->id_berita.'/'.$db->slug_judul.''); ?>">Read More</a>
+										</p>
+									</div>
 							</div>
 						</div>
 				</div>
@@ -125,7 +146,7 @@
 
 	<div class="vd">
 		<div class="container">
-			<h3 class="tittle-w3ls cen">Yuk, Kenalan dengan MRI </h3>
+			<h3 class="tittle-w3ls cen ">Yuk, Kenalan dengan MRI </h3>
 			<div class="row">
 				<div class="col-md-6 ser-first-grid">
 					<div class="embed-responsive embed-responsive-16by9">
@@ -142,7 +163,7 @@
 		</div>
 	</div>
 	
-	<div class="banner_bottom proj">
+	<div class=" banner_bottom proj">
 		<div class="wrap_view">
 			<h3 class="tittle-w3ls">Program</h3>
 			<?php $i = 1; foreach ($data_program as $dp) {
@@ -151,7 +172,7 @@
 					<div class="banner_bottom_pos main">
 						<div class="banner_bottom_pos_grid ">
 							<center>
-								<img src="<?php echo site_url(); ?>assets/Img/<?= $dp->foto ?>" class="img-responsive" alt="Gambar" style=" width: 300px; height: 200px;"> 
+								<img src="<?php echo site_url(); ?>assets/Img/program/<?= $dp->foto ?>" class="img-responsive" alt="Gambar" style=" width: 300px; height: 200px;"> 
 							</center>
 							<div class=" banner_bottom_grid_right ">
 								<h3 style="color: red"><?= $dp->nama_program ?></h3>
@@ -168,9 +189,10 @@
 	<!--//banner_bottom-->
 	<!--/projects-->
 	<!-- <div class=""> -->
-	<div class="works">
-		<div class="container wrap_view">		
-			<div class="col-md-3 ser-first-grid text-center">
+	<div class=" works">
+		<div class="container">
+
+			<div class="col-md-3 ser-first-grid text-center row">
 				<div class="total">
 					<h3><?php foreach ($jumlah_relawan as $jk) {
 	                  echo $jk->jumlah_relawan;
@@ -188,7 +210,7 @@
 				</div>
 			</div>
 
-			<div class="row col-md-3 ser-first-grid text-center">
+			<div class="row col-md-3 ser-first-grid text-center row">
 				<div class="total">
 					<h3><?php foreach ($jumlah_berita as $jb) {
 	                  echo $jb->jumlah_berita;
@@ -197,7 +219,7 @@
 				</div>
 			</div>
 
-			<div class="row col-md-3 ser-first-grid text-center">
+			<div class="row col-md-3 ser-first-grid text-center row">
 				<div class="total">
 					<h3><?php foreach ($jumlah_agenda as $ja) {
 	                  echo $ja->jumlah_agenda;
@@ -224,8 +246,8 @@
 										if ($i <=3 ) { 
 											$active = ($key == 0) ? 'active' : '';
 											echo '<li data-target="#quote-carousel" data-slide-to=" '.$key.' " class=" '.$active.' "></li>';
-										?>
-										<?php $i++; }else{}}?>
+								?>
+								<?php $i++; }else{}}?>
 							</ol>
 
 							<!-- Carousel Slides / Quotes -->
@@ -233,13 +255,14 @@
 								<?php 
 									foreach ($data_testimoni as $key => $value) {
 										$active = ($key == 0) ? 'active' : '';
+
 										echo '<div class="item ' . $active . '">
 	                                            <div class="test_grid">	
 	                                            	<div class="col-sm-3 text-center">
 													<img src="' .site_url('assets/Img/testimoni/').$value->foto.' " style=" width:105px; height: 110px; padding-top:0px; border: 4px solid rgba(255, 255, 255, 0.07);" class="img-responsive">
 													</div>
 													<div class="col-sm-9 test_img_info">
-														<p style="color: red"><b><blockquote> '.$value->testimoni.'</b></blockquote></p>
+														<p style="color: white"><b><blockquote> '.$value->testimoni.'</b></blockquote></p>
 														<h6>'.$value->nama_rel.'</h6>
 													</div>
 	                                            </div>

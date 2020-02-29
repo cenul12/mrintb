@@ -15,6 +15,7 @@ class Admin extends CI_Controller {
 			'jumlah_program' => $this->M_view->jumlah_program()->result_object(),
 			'jumlah_berita' => $this->M_view->jumlah_berita()->result_object(),
 			'jumlah_agenda' => $this->M_view->jumlah_agenda()->result_object(),
+			'jumlah_rapat' => $this->M_view->jumlah_rapat()->result_object(),
 			// 'email'=>$this->M_view->notif()->result_object()
 
 		);
@@ -83,16 +84,17 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
-	public function tambah_program()
+	public function edit_program($id)
 	{
 		$this->load->library('session');
 		$this->load->helper('url_helper');
 		if(!isset($_SESSION['admin'])){
 			return redirect('user/login');
 		}
-
+		$where= array('id_program'=>$id);
+		$data['data_program'] = $this->M_view->edit_program($where,'program')->result();
 		$this->load->view('admin/header');
-		$this->load->view('admin/Program/tambah_program');
+		$this->load->view('admin/Program/edit_program', $data);
 		$this->load->view('admin/footer');
 	}
 
@@ -119,7 +121,7 @@ class Admin extends CI_Controller {
 		}
 
 		$data['data_relawan'] = $this->M_view->relawan()->result_object();
-		$this->load->view('admin/header');
+		$this->load->view('admin/header'); 
 		$this->load->view('admin/Daftar Relawan/daftar_pengajuan',$data);
 		$this->load->view('admin/footer');
 	}
@@ -212,6 +214,20 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
+	public function edit_testimoni($id)
+	{
+		$this->load->library('session');
+		$this->load->helper('url_helper');
+		if(!isset($_SESSION['admin'])){
+			return redirect('user/login');
+		}
+		$where= array('id_testimoni'=>$id);
+		$data['data_testimoni'] = $this->M_view->edit_testimoni($where,'testimoni')->result();
+		$this->load->view('admin/header');
+		$this->load->view('admin/Testimoni/edit_testimoni', $data);
+		$this->load->view('admin/footer');
+	}
+
 	public function testimoni()
 	{
 		$this->load->library('session');
@@ -221,7 +237,7 @@ class Admin extends CI_Controller {
 		}
 		$data['data_testimoni'] = $this->M_view->testimoni()->result_object();
 		$this->load->view('admin/header');
-		$this->load->view('admin/testimoni', $data);
+		$this->load->view('admin/Testimoni/testimoni', $data);
 		$this->load->view('admin/footer');
 	}
 

@@ -60,20 +60,38 @@
 <!-- bootstrap time picker -->
 <script src="<?php echo site_url(); ?>assets/Admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- CK Editor -->
-<script src="<?php echo site_url(); ?>assets/Admin/bower_components/ckeditor/ckeditor.js"></script>
+<!-- <script src="<?php echo site_url(); ?>assets/Admin/bower_components/ckeditor/ckeditor.js"></script> -->
 <!-- Bootstrap WYSIHTML5 -->
 <script src="<?php echo site_url(); ?>assets/Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- <script src="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.all.min.js"></script>
-<script src="<?php echo site_url(); ?>assets/Admin/dist/js/myscript.js"></script> -->
+<script src="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<script src="<?php echo site_url(); ?>assets/Admin/dist/js/script.js"></script>
+<script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1')
+    // CKEDITOR.replace('editor1')
+    CKEDITOR.replace('editor1',{
+                    filebrowserImageBrowseUrl : '<?php echo site_url('assets/Admin/bower_components/kcfinder/browse.php');?>'             
+                });
+    CKEDITOR.replace('editor2',{
+                    filebrowserImageBrowseUrl : '<?php echo site_url('assets/Admin/bower_components/kcfinder/browse.php');?>'             
+                });
+    // CKEDITOR.replace('deskripsi') 
+    //bootstrap WYSIHTML5 - text editor
+    // $('.textarea').wysihtml5()
+  });
+</script>
+<!-- <script>
+  $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('editor2')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
   })
-</script>
+</script> -->
 <script>
 $(function(){
   $('#datepicker').datepicker({

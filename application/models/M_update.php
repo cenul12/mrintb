@@ -15,6 +15,7 @@ class M_update extends CI_Model {
 
     //relawan
     public function update_profil($id,$object){
+
 		$this->db->where('id_relawan', $id);
 		$this->db->update('relawan', $object);
     }

@@ -6,13 +6,25 @@
 	              position: static;
 				  padding: 13px 10px 20px;
 				  height: 520px;
-				  width: 400Px;
+				  width: 380Px;
 				  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
 	            }
 	            .main:hover {
 				  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 				}
-		</style>	
+				@media(max-width:1080px){
+					.main{
+						width: 310px;
+						height: 550px;
+					}
+				}
+				@media(max-width:900px){
+					.main{
+						width: auto;
+						height: auto;
+					}
+				}
+		</style><br>	
 			<h3 class="tittle-w3ls">Berita</h3>
 			<div class="inner_sec">
 				<?php $jumlah = 1; ?>
@@ -20,17 +32,17 @@
 				<div class="col-md-4 banner_bottom_left" >
 					<div class="banner_bottom_pos main">
 						<div class="banner_bottom_pos_grid ">
-							<!-- <a href="<?= site_url('user/detail_berita/'.$db->id_berita.''); ?>"> -->
+							<a href="<?= site_url('user/detail_berita/'.$db->id_berita.'/'.$db->slug_judul.' '); ?>">
 								<div>
 									<center>
-										<img src="<?php echo site_url(); ?>assets/Img/<?= $db->foto ?>" class="img-responsive" alt="Conceit" style=" width: 370px; height: 250px;"> 
+										<img src="<?php echo site_url(); ?>assets/Img/berita/<?= $db->foto ?>" class="img-responsive" alt="Conceit" style=" width: 370px; height: 250px;"> 
 									</center>
 								</div>
-							<!-- </a> -->
+							 </a>
 								<div class=" banner_bottom_grid_right ">
-									
-									<p></p>
-									<h3 class="wr"><?=$db->judul_berita?></h3>
+									<center>
+										<h4 class="wr" style="font-style: normal;"><?=$db->judul_berita?></h4>
+									</center>
 									
 									<?php
 								      if(substr($db->tanggal,5,2) == '01'){
@@ -61,10 +73,10 @@
 								    ?>
 								    <?php $tahun = substr($db->tanggal,0,4) ?>
 								    <?php $tanggal = substr($db->tanggal,8,2) ?>
-									<p class="db" style="color: red"><i class="fa fa-user"></i> Redaksi MRI <i class="fa fa-calendar"></i><?php echo ' ', $tanggal,' ', $bulan,' ', $tahun ?></p>
+									<p  style="color: rgb(251, 140, 1);"><i class="fa fa-user"></i> <?= $db->penulis ?>  <i class="fa fa-calendar"></i><?php echo ' ', $tanggal,' ', $bulan,' ', $tahun ?></p>
 								</div>
 							<!-- </a> -->
-							<p> <?php $konten=substr($db->isi_berita, 0, 130); echo $konten; ?>....<a href="<?= site_url('user/detail_berita/'.$db->id_berita.''); ?>">Read More</a></p>
+							<div style="text-align: justify; color: black;font-family: sans-serif;"><p> <?php $konten=substr($db->isi_berita, 0, 130); echo $konten; ?>....<a href="<?= site_url('user/detail_berita/'.$db->id_berita.'/'.$db->slug_judul.''); ?>">Read More</a></p></div>
 						</div>
 					</div>
 				</div>

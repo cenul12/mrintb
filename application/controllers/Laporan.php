@@ -31,11 +31,11 @@ Class Laporan extends CI_Controller{
         $this->load->view('admin/Laporan/Cetak_agenda', $data);
     }
 
-    public function cetak_bio($id_relawan){
-        $data['data'] = $this->db->get_where('relawan', ['id_relawan'=>$id_relawan])->row();
-        // $data['data'] = $this->db->get_where('relawan')->row();
+    public function cetak_bio($id){
+        // $data['data'] = $this->db->get_where('relawan', ['id_relawan'=>$id_relawan])->row();
+        // $data['data'] = $this->db->get_where('relawan')->row(); 
         
-        // $data['data'] = $this->M_view->relawan_a($id)->result_object();
+        $data['data'] = $this->M_view->cetak_bio($id)->row();
         $this->load->view('admin/Laporan/Bio_relawan', $data);
     }
 

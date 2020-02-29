@@ -8,17 +8,18 @@
           <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Kirim Notif</h3>
+                    <h3 class="box-title">Kirim Notifikasi</h3>
                 </div>
                 <!-- /.box-header -->
-                <?php if($this->session->flashdata('flash')) : ?>
+                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+                <!-- <?php if($this->session->flashdata('flash')) : ?>
                     <div class="box-body">
                         <div class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             Email Berhasil <strong><?= $this->session->flashdata('flash'); ?></strong>.
                         </div>
                     </div>
-                <?php endif; ?>
+                <?php endif; ?> -->
 
                 <form role="form" action="<?php echo site_url('Email/send') ?>"  method="post" enctype="multipart/form-data" accept-charset="utf-8">
                     <div class="box-body">

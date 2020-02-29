@@ -51,8 +51,6 @@ class User extends CI_Controller {
 		$this->pagination->initialize($config);
 		$dat['query']= $this->db->get('berita', $config['per_page'], $this->uri->segment(3));
 
-
-		// $data['data_berita'] = $this->M_view->berita()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/berita', $dat);
 		$this->load->view('user/footer');
@@ -90,7 +88,6 @@ class User extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['data_program']= $this->db->get('program', $config['per_page'], $this->uri->segment(3));
 
-		// $data['data_program'] = $this->M_view->program()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/program', $data);
 		$this->load->view('user/footer');
@@ -98,7 +95,7 @@ class User extends CI_Controller {
 
 	public function daftar()
 	{
-		$data['data_prov'] = $this->M_view->provinsi()->result_object();
+		$data['data_prov'] = $this->M_view->provinsi();
 		// $data = array(
 		// 		'data_prov' =>$this->M_view->provinsi()->result_object(),
 		// 		'data_kab' =>$this->M_view->kabupaten1(),
@@ -113,7 +110,6 @@ class User extends CI_Controller {
 
 	public function syarat()
 	{
-		// $data['data_program'] = $this->M_view->program()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/syarat');
 		$this->load->view('user/footer');
@@ -121,7 +117,6 @@ class User extends CI_Controller {
 
 	public function tentang()
 	{
-		// $data['data_program'] = $this->M_view->program()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/tentang');
 		$this->load->view('user/footer');
@@ -137,7 +132,6 @@ class User extends CI_Controller {
 
 	public function lupa_password()
 	{
-		// $data['data_program'] = $this->M_view->program()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/lupa_password');
 		$this->load->view('user/footer');
@@ -145,10 +139,37 @@ class User extends CI_Controller {
 
 	public function password_baru()
 	{
-		// $data['data_program'] = $this->M_view->program()->result_object();
 		$this->load->view('user/header');
 		$this->load->view('user/password_baru');
 		$this->load->view('user/footer');
 	}
+
+	public function berhasil()
+	{
+		$this->load->view('user/header');
+		$this->load->view('user/berhasil_daftar');
+		$this->load->view('user/footer');
+	}
+
+	public function kabupaten()
+	{
+        $id_provinsi = $this->input->post('id_provinsi');
+        $data = $this->M_view->kabupaten($id_provinsi)->result();
+        echo json_encode($data);
+    }
+
+    public function kecamatan()
+    {
+        $id_kab = $this->input->post('id_kab');
+        $data = $this->M_view->kecamatan($id_kab)->result();
+        echo json_encode($data);
+    }
+
+    public function desa()
+    {
+        $id_kec = $this->input->post('id_kec');
+        $data = $this->M_view->desa($id_kec)->result();
+        echo json_encode($data);
+    }
 
 }

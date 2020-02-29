@@ -1,5 +1,11 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <style type="text/css">
+        img {
+              width: 100%;
+              height: auto;
+            }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -10,20 +16,13 @@
                 <div class="box-header">
                     <h3 class="box-title">Daftar Berita</h3>
                 </div>
-                <?php if($this->session->flashdata('flash')) : ?>
-                    <div class="box-body">
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            Data Berhasil <strong><?= $this->session->flashdata('flash'); ?></strong>.        
-                        </div> 
-                    </div>
-                <?php endif; ?>
+                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
                 <!-- /.box-header -->
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#tambah-berita">Tambah Data
+                    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#tambah-berita"><i class="glyphicon glyphicon-plus"></i> Tambah Data
                     </button>
                 </div>
-
+                <br><br>
                 <div class="box-body table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -32,7 +31,7 @@
                                 <th width="23%">Judul Berita</th>
                                 <th width="15%">Tanggal</th> 
                                 <th width="12%">Foto</th>
-                                <th width="5%">Aksi</th>
+                                <th width="7%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,12 +43,14 @@
                                 <td><?= $no++ ?></td>
                                 <td><?= $value->judul_berita ?></td>
                                 <td><?php echo date('d F Y', strtotime($value->tanggal)); ?></td>
-                                <td><img src="<?= site_url()?>assets/Img/<?= $value->foto;?>" width="100%" height="25%"></td>
+                                <td><img src="<?= site_url()?>assets/Img/berita/<?= $value->foto;?>" width="100%" height="25%"></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#lihat-berita<?php echo $value->id_berita ?>"><i class="fa  fa-eye"></i>
-                                    </button>
+                                    <center>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lihat-berita<?php echo $value->id_berita ?>" style="margin: 4px" ><i class="fa  fa-eye"></i>
+                                        </button>
 
-                                    <a href="<?= site_url('');?>Delete/berita/<?php echo $value->id_berita ?>" > <button type="button" class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapusnya?');"><i class="fa  fa-trash"></i></button></a>
+                                        <a href="<?= site_url('');?>Delete/berita/<?php echo $value->id_berita ?>" type="button" class="btn btn-danger tombol_hapus"><i class="fa  fa-trash"></i></a>
+                                    </center>
 
                                     <!-- <button type="button" class="btn btn-danger"><i class="fa  fa-pencil"></i></button> -->
                                 </td>
@@ -67,9 +68,23 @@
                                     <div class="modal-body">
                                     <!-- data rapat -->                                
                                         <center><h1><?php echo $value->judul_berita; ?></h1></center> <br/>
-                                        <label>Post : <?php echo date('d F Y', strtotime($value->tanggal)); ?></label> <br/>
-                                        <center><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="60%" height="40%"></center> <br/>
-                                        <?php echo $value->isi_berita; ?> <br/>
+                                        <center><img src='<?php echo site_url()?>assets/Img/berita/<?php echo $value->foto; ?>' width="60%" height="40%">
+                                            <h5 style="margin-bottom: 5px; padding-top: 10px; color: #a0a0a0"><?php echo $value->keterangan; ?></h5> 
+                                        </center> <br/>
+                                        <div class="col-md-12" style="color: red">
+                                            <div class="col-md-4">
+                                                <label>Post : <?php echo date('d F Y', strtotime($value->tanggal)); ?></label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Penulis : <?= $value->penulis ; ?></label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Editor : <?= $value->editor ; ?></label>
+                                            </div><br>
+                                        </div>
+                                        <div style="text-align: justify;">
+                                            <?php echo $value->isi_berita; ?> <br/>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
@@ -104,12 +119,19 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="row">
-                                        <label class="col-md-2" for="exampleInputFile">Foto</label>
+                                        <label for="inputText4" class="col-md-2 control-label">Penulis</label>
                                         <div class="col-md-8">
-                                            <input type="file" name="foto" required>
+                                            <input type="text" class="form-control" id="inputText4" placeholder="Penulis" name="penulis" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="inputText5" class="col-md-2 control-label">Editor</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="inputText5" placeholder="editor" name="editor" required>
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +142,7 @@
                                             <div class="box-body pad">
                                                 <div class="col-md-8">
                                                     <form>
-                                                        <textarea  id="editor1" row="20" col="30" name="isi_berita">
+                                                        <textarea  id="editor1" class="form-control" name="isi_berita">
                                                         </textarea>
                                                     </form>
                                                 </div>
@@ -129,6 +151,30 @@
                                     </div>
                                     <!--/.row (editor) -->
                                 </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-2" for="exampleInputFile">Foto</label>
+                                        <div class="col-md-6">
+                                            <img src="<?php echo site_url("assets/img/pp.png")?>" name="output_image" id="output_image" style="height: 210px; width: 200px">
+                                            <input type="file" name="foto" class="form-control" onchange="preview_image(event)" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                            <Label class="col-md-2">Ket. Foto</label>
+                                            <div class="box-body">
+                                                <div class="col-md-8">
+                                                    <!-- <form> -->
+                                                        <textarea rows="5" class="form-control" name="keterangan" required></textarea>
+                                                    <!-- </form> -->
+                                                </div>
+                                            </div>
+                                            <!--/.col -->
+                                    </div>
+                                    <!--/.row (editor) -->
+                                </div><br>
+
                                 <div class="modal-footer" >
                                     <button type="submit" class="btn btn-primary pull-right">Tambah</button>
                                 </div>
@@ -150,3 +196,19 @@
     </section>
     <!-- /.content -->
 </div>
+<script type="text/javascript">
+     function preview_image(event) 
+    {
+        var reader = new FileReader();
+            reader.onload = function(data)
+            {
+              var output = document.getElementById('output_image');
+              $("[name='output_image']").val('#');
+              output.src = data.target.result;
+              output.style.display ="block";
+            }
+             reader.readAsDataURL(event.target.files[0]);
+
+    }
+
+</script>

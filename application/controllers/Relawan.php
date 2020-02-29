@@ -14,15 +14,16 @@ class Relawan extends CI_Controller {
 		if(!isset($_SESSION['id'])){
 			return redirect('user/login');
 		}
+
+			
 		$data = array(
-				'data_prov' =>$this->M_view->provinsi()->result_object(),
-				'data_kab' =>$this->M_view->kabupaten1(),
-				'data_kec' =>$this->M_view->kecamatan1(),
-				'data_desa' =>$this->M_view->desa1(),
+				'data_prov' =>$this->M_view->provinsi(),
+				'data_kab' =>$this->M_view->kabupaten($_SESSION['id']),
+				'data_rel' =>$this->M_view->getrelawan($_SESSION['id'])->row_array(),
 				'data_relawan' => $this->M_view->relawan_satu($_SESSION['id'])->row_array(),
+				// 'data_rel' => $this->M_view->relawan1($_SESSION['id'])->row_array(), 
 		);
 
-		// $data['data_relawan'] = $this->M_view->relawan_satu($_SESSION['id'])->row_array();
 		$this->load->view('relawan/header',$data);
 		$this->load->view('relawan/profile', $data);
 		$this->load->view('relawan/footer');
@@ -50,7 +51,6 @@ class Relawan extends CI_Controller {
 		}
 		
 		$data['data_relawan'] = $this->M_view->relawan_satu($_SESSION['id'])->row_array();
-		// $data['data_rapat'] = $this->M_view->rapat()->result_object();
 		$this->load->view('relawan/header',$data);
 		$this->load->view('relawan/ganti_password', $data);
 		$this->load->view('relawan/footer');
@@ -60,7 +60,7 @@ class Relawan extends CI_Controller {
 		$this->load->library('session');
 		$this->load->helper('url_helper');
 		if(!isset($_SESSION['id'])){
-			return redirect('user/login');
+			return redirect('user/login'); 
 		}
 
 		$tgl = $this->input->post('tanggal_agenda');
@@ -69,8 +69,6 @@ class Relawan extends CI_Controller {
 			'data_relawan'=> $this->M_view->relawan_satu($_SESSION['id'])->row_array(),
 			'tanggal_agenda' => $tgl );
 		
-		// $data['data_relawan'] = $this->M_view->relawan_satu($_SESSION['id'])->row_array();
-		// $data['data_rapat'] = $this->M_view->rapat()->result_object();
 		$this->load->view('relawan/header',$data);
 		$this->load->view('relawan/agenda', $data);
 		$this->load->view('relawan/footer');

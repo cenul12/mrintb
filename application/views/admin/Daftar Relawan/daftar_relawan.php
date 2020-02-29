@@ -1,5 +1,11 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <style type="text/css">
+        img {
+              width: 100%;
+              height: auto;
+            }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -43,15 +49,17 @@
                                 <td><?php echo $value->no_hp; ?></td>
                                 <td><?php echo $value->jenis_kelamin; ?></td>
                                 <td><?php echo $value->alamat; ?></td> 
-                                <td><img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="100%" height="15%"></td>
+                                <td><img src='<?php echo site_url()?>assets/Img/relawan/<?php echo $value->foto; ?>' width="100%" height="15%"></td>
                                 <td>
-                                    <button type="button" class="btn btn-danger jarak" data-toggle="modal" data-target="#lihat-data<?php echo $value->id_relawan ?>"><i class="fa  fa-eye"></i>Lihat</button>
-                                    <a href="<?php echo site_url().'index.php/Update/status_akun/'.$value->id_relawan?>/0"><button type="button" class="btn btn-danger jarak" ><i class="fa  fa-close"></i> Blok</button></a>
+                                    <center>
+                                        <button type="button" class="btn btn-primary jarak" data-toggle="modal" data-target="#lihat-data<?php echo $value->id_relawan ?>" style="margin: 4px"><i class="fa  fa-eye"></i> Lihat</button>
 
-                                    <a href="<?= site_url('');?>Delete/relawan/<?php echo $value->id_relawan ?>"><button type="button" class="btn btn-danger jarak"  onclick="return confirm('apakah anda yakin ingin menghapusnya?');"><i class="fa  fa-trash"></i>Hapus</button></a>
+                                        <a href="<?php echo site_url().'index.php/Update/status_akun/'.$value->id_relawan?>/0" type="button" class="btn btn-warning jarak tombol_blok" style="margin: 4px"><i class="fa  fa-close"></i> Blok</a>
 
-                                    <a href="<?= site_url('');?>Laporan/cetak_bio/<?php echo $value->id_relawan ?>" target="_blank"><button type="button" class="btn btn-danger jarak" ><i class="glyphicon glyphicon-print"></i>Cetak</button> </a>
+                                        <a href="<?= site_url('');?>Delete/daftar_relawan/<?php echo $value->id_relawan ?>" type="button" class="btn btn-danger jarak tombol_hapus" style="margin: 4px"><i class="fa  fa-trash"> Hapus</i></a>
 
+                                        <a href="<?= site_url('');?>Laporan/cetak_bio/<?php echo $value->id_relawan ?>" target="_blank"><button type="button" class="btn btn-info jarak" style="margin: 4px" ><i class="glyphicon glyphicon-print"></i> Cetak</button> </a>
+                                    </center>
                                 </td>
                             </tr>
 
@@ -149,7 +157,7 @@
                                             <div class=" row col-md-12">
                                                 <label class="col-md-3 control-label">Alamat  </label> 
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="alamat" value="<?= $value->alamat; ?> <?= $value->desa; ?> <?= $value->kecamatan; ?> <?= $value->kabupaten; ?> <?= $value->provinsi; ?>" disabled><?= $value->alamat; ?>, <?= $value->desa; ?> <?= $value->kecamatan; ?> <?= $value->kabupaten; ?> <?= $value->provinsi; ?>
+                                                    <textarea class="form-control" name="alamat" value="<?= $value->alamat; ?> <?= $value->id_desa; ?> <?= $value->id_kec; ?> <?= $value->id_kab; ?> <?= $value->id_provinsi; ?>" disabled><?= $value->alamat; ?>, Desa/Kelurahan <?= $value->id_desa; ?> <?= $value->id_kec; ?> <?= $value->id_kab; ?> <?= $value->id_provinsi; ?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -157,7 +165,7 @@
                                         <div class="box-body">
                                             <div class=" row col-md-12">
                                             <center>
-                                                <img src='<?php echo site_url()?>assets/Img/<?php echo $value->foto; ?>' width="40%">
+                                                <img src='<?php echo site_url()?>assets/Img/relawan/<?php echo $value->foto; ?>' style="width: 150px; height:auto; ">
                                             </center>
                                             </div>
                                         </div>

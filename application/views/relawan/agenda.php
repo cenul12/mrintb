@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="box-footer" >
-                            <button type="submit" class="btn btn-primary pull-right">Lihat</button>
+                            <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-search"></i> Cari</button>
                         </div>
                     </div>
                     <!-- /.box-body -->

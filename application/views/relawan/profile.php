@@ -22,14 +22,15 @@
                     <h3 class="box-title">Profile</h3>
                 </div>
                 <!-- /.box-header -->
-                <?php if($this->session->flashdata('flash')) : ?>
+                <div class="flash-data" data-flashdata="<?=$this->session->flashdata('flash');?>"></div>
+                <!-- <?php if($this->session->flashdata('flash')) : ?>
                     <div class="box-body">
                         <div class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             Data Berhasil <strong><?= $this->session->flashdata('flash'); ?></strong>.
                         </div> 
                     </div>
-                <?php endif; ?>
+                <?php endif; ?> -->
           
                 <form role="form" action="<?= site_url('');?>update/edit_profil/<?php echo $data_relawan['id_relawan'] ?>"  method="post" enctype="multipart/form-data" accept-charset="utf-8">
 
@@ -140,8 +141,8 @@
                     <div class=" row col-md-12">
                       <label class="col-md-2 control-label">Provinsi </label> 
                       <div class="col-md-4 ">
-                          <select name="prov" id="prov" class="form-control " onchange="provinsi()">
-                          <option value="<?php echo $data_relawan['provinsi'] ?>"><?php echo $data_relawan['provinsi'] ?></option>
+                          <select name="prov" id="prov" class="form-control " onchange="kabupaten()">
+                          <option value="<?php echo $data_relawan['id_provinsi'] ?>"><?php echo $data_rel['id_provinsi'] ?></option>
                           <?php
                               foreach ($data_prov as $prov) { 
                           ?>
@@ -149,14 +150,11 @@
                           <?php } ?>
                         </select> 
                       </div> 
-                      <label class="col-md-2">Kabupaten</label> 
+                      <label class="col-md-2">Kabupaten</label>  
                       <div class="col-md-4">
-                        <div id="kabupaten"></div>
-                          <div id="kabupaten1">
-                              <select class="form-control" onchange="kecamatan()">
-                                  <option value="<?php echo $data_relawan['kabupaten'] ?>"><?php echo $data_relawan['kabupaten'] ?></option>
-                              </select>
-                          </div>
+                        <select name="kab" id="kab" class="form-control" onchange="kecamatan()">
+                          <option value="<?php echo $data_relawan['id_kab']?>"><?php echo $data_rel['id_kab'] ?></option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -165,25 +163,19 @@
                     <div class=" row col-md-12">
                       <label class="col-md-2 control-label">Kecamatan </label> 
                       <div class="col-md-4">
-                        <div id="kecamatan"></div>
-                          <div id="kecamatan1">
-                              <select class="form-control" required >
-                                  <option value="<?php echo $data_relawan['kecamatan'] ?>"><?php echo $data_relawan['kecamatan'] ?></option>
-                              </select>
-                          </div>
+                        <select name="kec" id="kec" class="form-control" onchange="desa()">
+                            <option value="<?php echo $data_relawan['id_kec']?>"><?php echo $data_rel['id_kec'] ?></option>
+                        </select>
                       </div>
                       <label class="col-md-2">Desa</label> 
                       <div class="col-md-4">
-                          <div id="desa"></div>
-                            <div id="desa1">
-                                <select  class="form-control" required >
-                                   <option value="<?php echo $data_relawan['desa'] ?>"><?php echo $data_relawan['desa'] ?></option>
-                                </select>
-                            </div>
+                        <select name="des" id="des"  class="form-control">
+                           <option value="<?php echo $data_relawan['id_desa']?>"><?php echo $data_rel['id_desa'] ?></option>
+                        </select>
                       </div>
                     </div>
                   </div>
-
+                 
                   <div class="box-body">
                     <div class=" row col-md-12">
                       <label class="col-md-2 control-label">Email </label> 
@@ -201,7 +193,8 @@
                     <div class="row col-md-12">
                         <label class="col-md-2">Foto</label> 
                           <div class="col-md-3" >
-                            <img src="<?php echo site_url()?>assets/Img/<?php echo $data_relawan['foto']?>" name="output_image" id="output_image" ><br>
+                            <img src="<?php echo site_url()?>assets/Img/relawan/<?php echo $data_relawan['foto']?>" name="output_image" id="output_image" ><br>
+                            <input type="file" name="foto" class="form-control"  id="output" onchange="preview_image(event)">
                         </div>
                           <div class="col-md-4">
                            <h5> <b>*</b>Maks ukuran 500 KB (jpg/jpeg/png)</h5>
@@ -209,14 +202,7 @@
                         </div>
                     </div>
                   </div>
-                  <div class="box-body">
-                    <div class="row col-md-12">
-                        <label class="col-md-2"></label> 
-                          <div class="col-md-4">
-                            <input type="file" name="foto" class="form-control"  id="output" onchange="preview_image(event)">
-                          </div>
-                    </div>
-                  </div><br><br>
+                  <br>
                   
                       <div class="box-footer" >
                           <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Simpan</button>
@@ -261,29 +247,25 @@
 
     }
 
-  function provinsi()
+  function kabupaten()
     {
         var id_provinsi = $('#prov').val();
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Update/kabupaten')?>',
+            url  : '<?php echo site_url('User/kabupaten')?>',
             dataType: 'JSON',
             data : {id_provinsi: id_provinsi},
-            success: function (kabupaten){
+            success: function (data){
                 var html = '';
-                html += '<select name="kab" id="kab" class="form-control" onchange="kecamatan()">';
-                html += '<option value="">Pilih</option>';
+                html += '<option value="value="<?php echo $data_rel['id_kab']?>""><?php echo $data_rel['id_kab'] ?></option>';
                 var i;
-                for (i=0; i<kabupaten.length; i++){
-                    html += '<option value="'+kabupaten[i].id_kab+'">'+kabupaten[i ].nama_kabupaten+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kab+'">'+data[i].nama_kabupaten+'</option>';
                 }
-                $('#kabupaten1').hide();
-                $('#kabupaten').html(html);
+                $('#kab').html(html);
             }
         });
-        kecamatan();
-        desa();
     }
 
     function kecamatan()
@@ -292,43 +274,38 @@
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Update/kecamatan')?>',
+            url  : '<?php echo site_url('User/kecamatan')?>',
             dataType: 'JSON',
             data : {id_kab: id_kab},
-            success: function (kecamatan){
+            success: function (data){
                 var html = '';
-                html += '<select name="kec" id="kec" class="form-control" onchange="desa()">';
-                html += '<option value="">Pilih</option>';
+                html += '<option value="value="<?php echo $data_rel['id_kec']?>""><?php echo $data_rel['id_kec'] ?></option>';
                 var i;
-                for (i=0; i<kecamatan.length; i++){
-                    html += '<option value="'+kecamatan[i].id_kec+'">'+kecamatan[i].nama_kecamatan+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kec+'">'+data[i].nama_kecamatan+'</option>';
                 }
-                $('#kecamatan1').hide();
-                $('#kecamatan').html(html);
+                $('#kec').html(html);
             }
         });
-        desa();
     }
-
+    
     function desa()
     {
         var id_kec = $('#kec').val();
 
         $.ajax({
             type : 'POST',
-            url  : '<?php echo site_url('Update/desa')?>',
+            url  : '<?php echo site_url('User/desa')?>',
             dataType: 'JSON',
             data : {id_kec: id_kec},
-            success: function (desa){
+            success: function (data){
                 var html = '';
-                html += '<select  class="form-control" >';
-                html += '<option value="">Pilih</option>';
+                html += '<option value="value="<?php echo $data_rel['id_desa']?>""><?php echo $data_rel['id_desa'] ?></option>';
                 var i;
-                for (i=0; i<desa.length; i++){
-                    html += '<option value="'+desa[i].id_desa+'">'+desa[i].nama_desa+'</option>';
+                for (i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
                 }
-                $('#desa1').hide();
-                $('#desa').html(html);
+                $('#des').html(html);
             }
         });
     }

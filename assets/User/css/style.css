@@ -85,11 +85,13 @@ h6 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    max-width: 1500px;
+    max-height: 2000px;
 
-    
-
+}
     
 }
+
 .card{
     /*margin-top: 20px;*/
     margin-bottom: 10px;
@@ -104,6 +106,7 @@ h6 {
 .vd{
     background-color: rgb(204, 0, 0);
     padding: 12px;
+    width: auto;
 }
 
 .foot{
@@ -165,6 +168,19 @@ h6 {
 } 
 .bg-dftr{
     background-color: rgb(240, 240, 240);
+}
+
+@media(max-width:1080px){
+    .bg-dftr{
+        width: 310px;
+        height: 550px;
+    }
+}
+@media(max-width:1080px){
+    .bg-dftr{
+        width: auto;
+        height: auto;
+    }
 }
 /*.gr{
     border: 3px solid red;

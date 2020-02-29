@@ -50,6 +50,9 @@
 <!-- fullCalendar -->
 <script src="<?php echo site_url(); ?>assets/Admin//bower_components/moment/moment.js"></script>
 <script src="<?php echo site_url(); ?>assets/Admin//bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="<?php echo site_url(); ?>assets/Admin/dist/js/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+<script src="<?php echo site_url(); ?>assets/Admin/dist/js/script.js"></script>
 
 <script>
   $(function () {
